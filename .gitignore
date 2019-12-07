@@ -1,0 +1,9 @@
+pytorch/cnn_classifiction_5/hymenoptera_data/
+pytorch/cnn_classifiction_5/cifar10/
+pytorch/MNIST/
+pytorch/cnn_classifiction_5/mnist_data/
+pytorch/3_classification/data/MNIST/
+pytorch/word_vector/skipgram_demo/text8.test.txt
+pytorch/word_vector/skipgram_demo/text8.dev.txt
+*.pth
+pytorch/word_vector/skipgram_demo/text8.train.txt
