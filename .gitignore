@@ -10,3 +10,5 @@ pytorch/word_vector/skipgram_demo/text8.train.txt
 rabbitmq/rpc/data/
 spider/.idea/
 spider/data/
+xiaohulu/data/
+xiaohulu/.idea/
