@@ -19,3 +19,5 @@ opencv/.idea/
 exercises/hymenoptera_data/
 exercises/mnist/
 exercises/.idea/
+deeplearning/yolov3/det/
+deeplearning/yolov3/yolov3.weights
