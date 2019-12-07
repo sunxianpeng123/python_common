@@ -1,0 +1,29 @@
+2019-12-01 19:32:05,992 - __main__ - INFO - Start print log
+2019-12-01 19:32:05,996 - __main__ - WARNING - Something maybe fail.
+2019-12-01 19:32:05,996 - __main__ - INFO - Finish
+2019-12-01 19:35:09,736 - __main__ - INFO - Start print log
+2019-12-01 19:35:09,736 - __main__ - WARNING - Something maybe fail.
+2019-12-01 19:35:09,736 - __main__ - ERROR - Faild to open sklearn.txt from logger.error
+Traceback (most recent call last):
+  File "F:/PythonProjects/python_study/common_used_package/logging/log_traceback.py", line 30, in <module>
+    open("sklearn.txt", "rb")
+FileNotFoundError: [Errno 2] No such file or directory: 'sklearn.txt'
+2019-12-01 19:35:09,736 - __main__ - INFO - Finish
+2019-12-01 19:40:41,240 - mainModule - INFO - creating an instance of subModule.subModuleClass
+2019-12-01 19:40:41,240 - mainModule.sub.module - INFO - creating an instance in SubModuleClass
+2019-12-01 19:40:41,240 - mainModule - INFO - calling subModule.subModuleClass.doSomething
+2019-12-01 19:40:41,240 - mainModule.sub.module - INFO - do something in SubModule
+2019-12-01 19:40:41,240 - mainModule.sub.module - INFO - finish something in SubModuleClass
+2019-12-01 19:40:41,240 - mainModule - INFO - done with  subModule.subModuleClass.doSomething
+2019-12-01 19:40:41,240 - mainModule - INFO - calling subModule.some_function
+2019-12-01 19:40:41,240 - mainModule.sub - INFO - call function some_function
+2019-12-01 19:40:41,240 - mainModule - INFO - done with subModule.some_function
+2019-12-01 19:40:50,442 - mainModule - INFO - creating an instance of subModule.subModuleClass
+2019-12-01 19:40:50,442 - mainModule.sub.module - INFO - creating an instance in SubModuleClass
+2019-12-01 19:40:50,442 - mainModule - INFO - calling subModule.subModuleClass.doSomething
+2019-12-01 19:40:50,442 - mainModule.sub.module - INFO - do something in SubModule
+2019-12-01 19:40:50,442 - mainModule.sub.module - INFO - finish something in SubModuleClass
+2019-12-01 19:40:50,442 - mainModule - INFO - done with  subModule.subModuleClass.doSomething
+2019-12-01 19:40:50,442 - mainModule - INFO - calling subModule.some_function
+2019-12-01 19:40:50,442 - mainModule.sub - INFO - call function some_function
+2019-12-01 19:40:50,442 - mainModule - INFO - done with subModule.some_function

@@ -1,17 +1,190 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8c1ddbfd-9fda-4efc-8335-1c8bb9418669" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/python_common.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/1_pytorch_base/1_tensor_numpy_gpu.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/1_pytorch_base/2_tensor_dim_about.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/1_pytorch_base/3_tensor_compute.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/1_pytorch_base/4_tensor_autograd.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/1_pytorch_base/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/2_regression/1_a_yuan_linear_demo_v1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/2_regression/1_a_yuan_linear_demo_v2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/2_regression/2_multi_yuan_linear_demo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/2_regression/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/2_regression/regression_self_demo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/2_regression/regression_torch_demo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/3_classification/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/3_classification/classify_torch_demo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/3_classification/logistic.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/3_classification/logistic_regresion_v1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/3_classification/logistic_regresion_v2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/4_network/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/4_network/deepth_network_v1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/4_network/multi_network_v1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/4_network/multi_network_v2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/4_network/multi_network_v3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/4_network/two_layer_v1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/4_network/two_layer_v2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/4_network/two_layer_v3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/4_network/two_layer_v4.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/4_network/two_layer_v5.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/alexnet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/alexnet_simulate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/conv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/densenet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/fashion_mnist_cnn.pt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/fashion_mnist_data/FashionMNIST/raw/train-images-idx3-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/googlenet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/lena.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/lenet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/maxpool.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/resnet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/simple_cnn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/simple_cnn_check_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/transfer_learning.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/transfer_learning_check_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/vggnet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/cnn_classifiction_5/vggnet_simulate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/tensor_compute/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/tensor_compute/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/word_vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/word_vector/fizz_buzz_game.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/word_vector/skipgram_demo/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/word_vector/skipgram_demo/skip_gram.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pytorch/word_vector/test.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/python_common.iml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="874" />
     <option name="width" value="1048" />
     <option name="height" value="1040" />
   </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="python_common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python_common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="python_common" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python_common" type="462c0819:PsiDirectoryNode" />
+              <item name="pytorch" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\PythonProjects\python_common" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8c1ddbfd-9fda-4efc-8335-1c8bb9418669" name="Default Changelist" comment="" />
+      <created>1575702966219</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575702966219</updated>
+      <workItem from="1575702972185" duration="247000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="247000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3379531" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="SciView" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="masterDetails">
     <states>
