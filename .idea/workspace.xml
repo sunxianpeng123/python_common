@@ -1,45 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c1ddbfd-9fda-4efc-8335-1c8bb9418669" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/common_used_package/configparser.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/configparser_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/data/test.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/data/test.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/datetime_test/date_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/datetime_test/datetime_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/datetime_test/time_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/datetime_test/timedelta.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/datetime_test/tzinfo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/json_pickle_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/logging_test/errors.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/logging_test/info.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/logging_test/log.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/logging_test/log.txt.1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/logging_test/log.txt.2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/logging_test/log.txt.3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/logging_test/log_json.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/logging_test/log_level.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/logging_test/log_to_file.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/logging_test/log_traceback.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/logging_test/log_yaml.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/logging_test/logg_roll_back.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/logging_test/logging.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/logging_test/logging.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/logging_test/mainModule.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/logging_test/subModule.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/os_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/random_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/sys_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/test.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common_used_package/time_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="8c1ddbfd-9fda-4efc-8335-1c8bb9418669" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -117,12 +87,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575702966219</updated>
-      <workItem from="1575702972185" duration="965000" />
+      <workItem from="1575702972185" duration="1239000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="965000" />
+    <option name="totallyTimeSpent" value="1239000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -152,6 +122,11 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/spider/scrapy/quotes.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
