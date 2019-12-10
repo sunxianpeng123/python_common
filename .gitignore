@@ -26,3 +26,8 @@ skimage/video/video.mp4
 .idea/
 pytorch/data/
 pytorch/4_network/model/
+<<<<<<< HEAD
+=======
+pytorch/cnn_classifiction_5/model/
+rabbitmq/rpc/data/
+>>>>>>> update merge

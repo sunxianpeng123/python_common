@@ -43,11 +43,11 @@ def get_rois(image, properties):
         x, y, w, h = prop.bbox
         # print('x = {},y = {},w = {},h = {}'.format(x, y, w, h))
         list.append(image[x:w,y:h])
-    exit(0)
+
     return list
 
 if __name__ == '__main__':
-    img_path = r'F:\PythonProjects\python_common\skimage\measure\image\6.jpg'
+    img_path = r'F:\PythonProjects\python_common\skimage\images\number\1.jpg'
     img = cv2.imread(img_path)
     gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     print('img shape = {}'.format(img.shape))
