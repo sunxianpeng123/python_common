@@ -47,7 +47,7 @@ def get_rois(image, properties):
     return list
 
 if __name__ == '__main__':
-    img_path = r'F:\PythonProjects\python_common\skimage\images\number\1.jpg'
+    img_path = r'F:\PythonProjects\python_common\skimage\images\number\4.jpg'
     img = cv2.imread(img_path)
     gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     print('img shape = {}'.format(img.shape))
@@ -83,8 +83,6 @@ if __name__ == '__main__':
                     test_rois_2.append(roi)
                 else:
                     test_rois_3.append(roi)
-
-
 
 
     print("test_rois_1 num = {}".format(len(test_rois_1)))

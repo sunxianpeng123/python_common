@@ -55,10 +55,24 @@ def get_rois(image,stats):
         list.append(image[y:y+h,x:x+w])
     return list
 
+def morphology(thresh,type='dilate'):
+    """形态学转换"""
+    result = None
+    if type == 'dilate':
+        # 膨胀
+        size = 2
+        kernal = np.ones((size, size), np.uint8)
+        result = cv2.dilate(thresh, kernal, iterations=1)
+    if type == 'erode':
+        size = 2
+        kernel = np.ones((size,size),np.uint8)
+        result = cv2.erode(thresh,kernel,iterations=1)
+    return result
+
 if __name__ == '__main__':
     # stats 是bounding box的信息，N*5的矩阵，行对应每个label，五列分别为（x,y,w,h,area）
     # centroids是每个域的质心坐标
-    img_path = r'F:\PythonProjects\python_common\opencv\photo\image\number\1.jpg'
+    img_path = r'F:\PythonProjects\python_common\opencv\photo\image\number\8.jpg'
     img = cv2.imread(img_path)
     print('img shape = {}'.format(img.shape))
     gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
@@ -67,45 +81,51 @@ if __name__ == '__main__':
     ret, thresh = cv2.threshold(gray, 240, 255, cv2.THRESH_BINARY_INV)
     # thresh = cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,3,1)#自适应二值化
     # ret,thresh = cv2.threshold(gray,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)#otsu二值化
+    """形态学转换"""
+    # show_image(thresh)
+    # thresh = morphology(thresh)
+    # show_image(thresh)
 
-    num_labels,labels,stats,centroids = cv2.connectedComponentsWithStats(thresh,connectivity=8)
+    num_labels,labels,stats,centroids = cv2.connectedComponentsWithStats(thresh,connectivity=4)
 
     background = get_background(stats)
     stats = np.delete(stats,background,axis=0)
-    print(stats)
+    # print(stats)
 
     stats = stats[stats[:,0].argsort()]#按照第一列的值，对行进行排序
     print('label shape = {},stats.shape = {},centroids.shape = {}'.format(labels.shape,stats.shape,centroids.shape))
-    print(stats)
-
+    # print(stats)
+    print(centroids)
     rois = get_rois(img,stats)
 
-    test_rois_1 = []
-    test_rois_2 = []
-    test_rois_3 = []
     filtered_rois = []
-
+    roi_width_10 = []
     for roi in rois:
-        min_hight = img.shape[0] / 5
-        height, width, channel = roi.shape
-        if height > min_hight and width >= 1:
-            filtered_rois.append(roi)
-            print('height={}, width={}'.format(height, width))
-            if len(test_rois_1) < 6:
-                test_rois_1.append(roi)
+        min_hight = img.shape[0] / 6
+        x,y,channel_1 = img.shape
+        height, width, channel_2 = roi.shape
+        percent = width / height
+        if height > min_hight and width >= 1 and height != x and width != y:
+            print('height={}, width={},width / height = {}'.format(height, width,width/height))
+            if width > 10 and  height >7 and percent > 1.2:#符合条件的图片进行再次切分
+                print('###########################height={}, width={},width / height = {}'.format(height, width,width/height))
+                # roi_width_10.append(roi)
+                if width >=11 and width <= 14:#再次切分成两个
+                    mid = width // 2
+                    filtered_rois.append(roi[:,:mid])
+                    filtered_rois.append(roi[:, mid:])
+                if width >= 15 and width <=37:#再次切分成三个
+                    mid_1 = width // 3
+                    mid_2 = mid_1 * 2
+                    filtered_rois.append(roi[:,:mid_1+1])
+                    filtered_rois.append(roi[:, mid_1+1:mid_2+1])
+                    filtered_rois.append(roi[:, mid_2 + 1:])
             else:
-                if len(test_rois_2) < 6:
-                    test_rois_2.append(roi)
-                else:
-                    test_rois_3.append(roi)
-
-    print("test_rois_1 num = {}".format(len(test_rois_1)))
-    print("test_rois_2 num = {}".format(len(test_rois_2)))
-    print("test_rois_3 num = {}".format(len(test_rois_3)))
+                filtered_rois.append(roi)
     print("filtered_rois num = {}".format(len(filtered_rois)))
-    showImage(test_rois_1)
-    showImage(test_rois_2)
-    showImage(test_rois_3)
+    print("roi_width_10 num = {}".format(len(roi_width_10)))
+    showImage(filtered_rois)
+    showImage(roi_width_10)
 
 
 
