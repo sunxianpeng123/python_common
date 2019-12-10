@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c1ddbfd-9fda-4efc-8335-1c8bb9418669" name="Default Changelist" comment="" />
+    <list default="true" id="8c1ddbfd-9fda-4efc-8335-1c8bb9418669" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/photo/connectedComponentsWithStats.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/photo/image/cnt.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/photo/image/jingwu.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/photo/image/lena.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/opencv/photo/image/person.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skimage/measure/image/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skimage/measure/image/10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skimage/measure/image/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skimage/measure/image/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skimage/measure/image/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skimage/measure/image/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skimage/measure/image/6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skimage/measure/image/7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skimage/measure/image/8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skimage/measure/image/9.jpg" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,23 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/skimage/measure/label_and_regionprops.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/skimage/measure/label_and_regionprops_1.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="467">
-              <caret line="63" column="44" lean-forward="true" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/opencv/photo/connectedComponentsWithStats.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="68" column="75" selection-start-line="68" selection-start-column="47" selection-end-line="68" selection-end-column="75" />
-              <folding>
-                <element signature="e#126#144#0" expanded="true" />
-              </folding>
+              <caret line="63" column="44" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -247,15 +253,16 @@
       <workItem from="1575702972185" duration="3329000" />
       <workItem from="1575707145676" duration="1139000" />
       <workItem from="1575784106171" duration="1558000" />
-      <workItem from="1575857273757" duration="17245000" />
+      <workItem from="1575857273757" duration="18216000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23271000" />
+    <option name="totallyTimeSpent" value="24242000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29157782" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -369,13 +376,6 @@
     <entry file="file://$PROJECT_DIR$/opencv/photo/image/number/2.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/skimage/measure/label_and_regionprops.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="63" column="44" lean-forward="true" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/opencv/photo/image/number/3.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -392,6 +392,13 @@
           <folding>
             <element signature="e#126#144#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/skimage/measure/label_and_regionprops_1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="63" column="44" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
         </state>
       </provider>
     </entry>

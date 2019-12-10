@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../deeplearning/.idea/deeplearning.iml" filepath="$PROJECT_DIR$/../deeplearning/.idea/deeplearning.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../github/.idea/github.iml" filepath="$PROJECT_DIR$/../../github/.idea/github.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../opencv/.idea/opencv.iml" filepath="$PROJECT_DIR$/../opencv/.idea/opencv.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/spider.iml" filepath="$PROJECT_DIR$/.idea/spider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../xiaohulu/.idea/xiaohulu.iml" filepath="$PROJECT_DIR$/../xiaohulu/.idea/xiaohulu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../github_projects/yolov3/.idea/yolov3.iml" filepath="$PROJECT_DIR$/../github_projects/yolov3/.idea/yolov3.iml" />
+    </modules>
+  </component>
+</project>
