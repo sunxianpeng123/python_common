@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 pytorch/cnn_classifiction_5/hymenoptera_data/
 exercises/hymenoptera_data/
 opencv/video/extract_folder/
@@ -19,3 +20,6 @@ pytorch/4_network/model_net.pth
 pytorch/4_network/save_seq_net.pth
 pytorch/4_network/save_seq_net_params.pth
 deeplearning/yolov3/yolov3.weights
+=======
+skimage/video/video.mp4
+>>>>>>> 95d58995509e3150a346578b5d1bc9132306ab99
