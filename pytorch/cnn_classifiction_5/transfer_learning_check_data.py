@@ -30,28 +30,32 @@ print("Torchvision Version: ", torchvision.__version__)
     （4）模型训练
 """
 
-
-def imshow(tensor, title=None):
-    image = tensor.cpu().clone()  # we clone the tensor to not do changes on it
-    image = image.squeeze(0)  # remove the fake batch dimension
-    # 这个.squeeze(0)看不懂，去掉也可以运行
-    image = unloader(image)  # tensor转换成图像
+def check_one_image_in_loader(t_loader, title='Image'):
+    batch_imgs = next(iter(t_loader))[0]
+    print('batch_imgs.shape = {}'.format(batch_imgs.shape))
+    img_tensor = batch_imgs[8]
+    img = img_tensor.cpu().clone()  # we clone the tensor to not do changes on it
+    # img = img.squeeze(0)  # remove the fake batch dimension,这个.squeeze(0)看不懂，去掉也可以运行
+    print('img.shape = {}'.format(img.shape))
+    # transforms：torchvision的子模块，常用的图像操作
+    # .ToPILImage() 把tensor或数组转换成图像
+    # 详细转换过程可以看这个：https://blog.csdn.net/qq_37385726/article/details/81811466
+    # 详细了解看这个：https://blog.csdn.net/SZuoDao/article/details/52973621
+    image =transforms.ToPILImage()(img)# unloader(img)  # tensor转换成图像
     plt.imshow(image)
-    if title is not None:
-        plt.title(title)
-    plt.pause(1)  # pause a bit so that plots are updated
+    plt.title(title)
     # 可以去掉看看，只是延迟显示作用
-
+    plt.pause(1)  # pause a bit so that plots are updated
+    plt.show()
 
 if __name__ == '__main__':
     input_size = 224
     # Top level data directory. Here we assume the format of the directory conforms
     #   to the ImageFolder structure
-    data_dir = "./hymenoptera_data"
+    data_dir = "F:\PythonProjects\python_common\pytorch\data\hymenoptera_data"
     # Batch size for training (change depending on how much memory you have)
     batch_size = 32
     # 蜜蜂和蚂蚁数据集不会自动下载，请到群文件下载，并放在当前代码目录下
-    # os.path.join() 连接路径，相当于.../data_dir/train
     all_imgs = datasets.ImageFolder(os.path.join(data_dir, "train"),
                                     transforms.Compose([
                                         transforms.RandomResizedCrop(input_size),  # 把每张图片变成resnet需要输入的维度224
@@ -61,19 +65,6 @@ if __name__ == '__main__':
     # 训练数据分batch，变成tensor迭代器
     loader = torch.utils.data.DataLoader(all_imgs, batch_size=batch_size, shuffle=True, num_workers=4)
     # 这个img是一个batch的tensor，torch.Size([32, 3, 224, 224])，三十二张224*224*3的图片
+    check_one_image_in_loader(loader)
 
-    img = next(iter(loader))[0]
-    print(img.shape)
-
-    # transforms：torchvision的子模块，常用的图像操作
-    # .ToPILImage() 把tensor或数组转换成图像
-    # 详细转换过程可以看这个：https://blog.csdn.net/qq_37385726/article/details/81811466
-    unloader = transforms.ToPILImage()  # reconvert into PIL image
-    # 详细了解看这个：https://blog.csdn.net/SZuoDao/article/details/52973621
-    # plt.ioff()
-    plt.ion()  # 交互模式，默认是交互模式，可以不写
-    plt.figure()
-    imshow(img[8], title='Image')
-    imshow(img[9], title='Image')
-    imshow(img[10], title='Image')
 

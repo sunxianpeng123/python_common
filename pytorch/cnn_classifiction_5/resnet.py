@@ -127,7 +127,7 @@ if __name__ == '__main__':
     print('output:	{}'.format(test_y.shape))
 
     print("训练数据===============")
-    from pytouch.cnn_classifiction_5.utils import train
+    from pytorch.cnn_classifiction_5.utils import train
     data_path = './cifar10'
     train_set = CIFAR10(data_path, train=True, transform=data_tf)
     train_data = torch.utils.data.DataLoader(train_set, batch_size=64, shuffle=True)

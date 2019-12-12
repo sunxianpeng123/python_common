@@ -31,3 +31,4 @@ pytorch/4_network/model/
 pytorch/cnn_classifiction_5/model/
 rabbitmq/rpc/data/
 >>>>>>> update merge
+*.pyc

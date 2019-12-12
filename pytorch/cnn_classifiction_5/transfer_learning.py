@@ -30,6 +30,19 @@ def check_train_data(dataloaders_dict):
         # print(inputs)
         # print(labels)
         print(labels.size())  # 最后一个batch不足32
+def check_one_image_in_loader(t_loader, title='Image'):
+    batch_imgs = next(iter(t_loader))[0]
+    print('batch_imgs.shape = {}'.format(batch_imgs.shape))
+    img_tensor = batch_imgs[8]
+    img = img_tensor.cpu().clone()  # we clone the tensor to not do changes on it
+    # img = img.squeeze(0)  # remove the fake batch dimension,这个.squeeze(0)看不懂，去掉也可以运行
+    print('img.shape = {}'.format(img.shape))
+    image =transforms.ToPILImage()(img)# unloader(img)  # tensor转换成图像
+    plt.imshow(image)
+    plt.title(title)
+    # 可以去掉看看，只是延迟显示作用
+    plt.pause(1)  # pause a bit so that plots are updated
+    plt.show()
 
 def check_model_ft_info(model_ft):
     print("model_ft = {}".format(model_ft))
@@ -39,12 +52,10 @@ def check_model_ft_info(model_ft):
     for name, param in model_ft.named_parameters():
         print(name)  # 看下都有哪些参数
 
-
 def set_parameter_requires_grad(model, feature_extracting):
     if feature_extracting:
         for param in model.parameters():
             param.requires_grad = False #提取的参数梯度不更新
-
 
 def initialize_model(model_name, num_classes, feature_extract, use_pretrained=True):
     model_ft = None
@@ -108,7 +119,7 @@ def train_model(model, dataloaders, criterion, optimizer, num_epochs=5):
             print("{} Loss: {} Acc: {}".format(phase, epoch_loss, epoch_acc))
             if phase == "val" and epoch_acc > best_acc:
                 best_acc = epoch_acc
-                # 模型变好，就拷贝更新后的模型参数
+
                 best_model_wts = copy.deepcopy(model.state_dict())
             if phase == "val":
                 # 记录每个epoch验证集的准确率
@@ -217,7 +228,7 @@ if __name__ == '__main__':
     print("ohist = {}".format(ohist))
 
     """训练所有参数"""
-    # train_all_parameter()
+    train_all_parameter()
     # Plot the training curves of validation accuracy vs. number
     #  of training epochs for the transfer learning method and
     #  the model trained from scratch
