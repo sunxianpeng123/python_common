@@ -32,3 +32,5 @@ pytorch/cnn_classifiction_5/model/
 rabbitmq/rpc/data/
 >>>>>>> update merge
 *.pyc
+opencv/photo/img.jpg
+opencv/photo/res.png
