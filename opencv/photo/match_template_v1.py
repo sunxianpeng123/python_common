@@ -24,9 +24,9 @@ def save_img(path,image):
 
 
 if __name__ == '__main__':
-    roi_source = r'E:/PythonProjects/深度学习数据/柱状图数据定位于识别/12.11更新/财经截图/5.jpg'
-    img_dir = r'E:/PythonProjects/深度学习数据/柱状图数据定位于识别/12.11更新/财经截图'
-    template_path = r'E:\PythonProjects\python_common\opencv\photo\image\template.jpg'
+    roi_source = r'F:\PythonProjects\深度学习数据\柱状图数据定位与识别\jpg\12.11更新\财经截图/5.jpg'
+    img_dir = r'F:\PythonProjects\深度学习数据\柱状图数据定位与识别\jpg\12.11更新\财经截图'
+    template_path = r'F:\PythonProjects\python_common\opencv\photo\image\template_data_1.jpg'
 
     template = cv2.imdecode(np.fromfile(template_path, dtype=np.uint8), -1)
     template_gray = cv2.cvtColor(template,cv2.COLOR_BGR2GRAY)
@@ -34,6 +34,7 @@ if __name__ == '__main__':
     print('template w = {}, h = {}'.format(w,h))
 
     for img_name in os.listdir(img_dir):
+        img_name = '105.jpg'#img_name #
         img_path = os.path.join(img_dir,img_name)
         # 读取中文图片
         img = cv2.imdecode(np.fromfile(img_path, dtype=np.uint8), -1)
@@ -45,14 +46,14 @@ if __name__ == '__main__':
         left_top = max_loc   # 左上角
         right_bottom = (left_top[0] + w, left_top[1] + h)  # 右下角
         print('left top ={},right_bottom = {}'.format(left_top,right_bottom))
-        cv2.rectangle(gray, left_top, right_bottom, 255, 2)  # 画出矩形位置
-
-        plt.subplot(121), plt.imshow(res, cmap='gray')
-        plt.title('Matching Result'), plt.xticks([]), plt.yticks([])
-
-        plt.subplot(122), plt.imshow(gray, cmap='gray')
-        plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
-        plt.show()
+        cv2.rectangle(img, left_top, right_bottom, (0, 0, 255),4)  # 画出矩形位置
+        cv2.imwrite('rectangle.jpg', img)
+        # plt.subplot(121), plt.imshow(res, cmap='gray')
+        # plt.title('Matching Result'), plt.xticks([]), plt.yticks([])
+        #
+        # plt.subplot(122), plt.imshow(gray, cmap='gray')
+        # plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
+        # plt.show()
 
 
         break
