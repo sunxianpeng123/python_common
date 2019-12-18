@@ -34,3 +34,6 @@ rabbitmq/rpc/data/
 *.pyc
 opencv/photo/img.jpg
 opencv/photo/res.png
+*.txt
+*.zip
+common_used_package/shutil_test/zip_unpack/
