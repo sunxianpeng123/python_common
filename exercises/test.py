@@ -2,7 +2,7 @@
 
 """
 @author: sunxianpeng
-@file: test.py
+@file: 1_indoor.py
 @time: 2019/11/14 14:12
 """
 import torch
