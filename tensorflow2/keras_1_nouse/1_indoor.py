@@ -6,13 +6,14 @@
 # @Project : python_common
 
 import tensorflow as tf
-from tensorflow.keras import layers
+import keras
+from keras import layers
 ############################################################
 #常见的神经网络都包含在keras.layer中(最新的tf.keras的版本可能和keras不同)
 ############################################################
 def add_model():
     """1、模型堆叠"""
-    model = tf.keras.Sequential()
+    model = keras.Sequential()
     model.add(layers.Dense(32,activation='relu'))
     model.add(layers.Dense(32, activation='relu'))
     model.add(layers.Dense(10, activation='softmax'))
@@ -48,9 +49,9 @@ def net_conf():
     layers.Dense(32, activation='sigmoid')
     layers.Dense(32, activation=tf.sigmoid)
     layers.Dense(32, kernel_initializer='orthogonal')
-    layers.Dense(32, kernel_initializer=tf.keras.initializers.glorot_normal)
-    layers.Dense(32, kernel_regularizer=tf.keras.regularizers.l2(0.01))
-    layers.Dense(32, kernel_regularizer=tf.keras.regularizers.l1(0.01))
+    layers.Dense(32, kernel_initializer=keras.initializers.glorot_normal)
+    layers.Dense(32, kernel_regularizer=keras.regularizers.l2(0.01))
+    layers.Dense(32, kernel_regularizer=keras.regularizers.l1(0.01))
 
 
 
@@ -59,6 +60,6 @@ def net_conf():
 
 if __name__ == '__main__':
     print(tf.__version__)
-    print(tf.keras.__version__)
+    print(keras.__version__)
     add_model()
     net_conf()
