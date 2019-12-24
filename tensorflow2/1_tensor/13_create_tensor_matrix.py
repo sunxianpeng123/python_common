@@ -19,7 +19,7 @@ def tf_matrix():
     # w
     net.build((4,784))
     # w.T * x
-    print('net          print(dir)(x).shape = {}'.format(net(x).shape))
+    print('net print(dir)(x).shape = {}'.format(net(x).shape))
     print('net kernel shape = {}'.format(net.kernel.shape))
     print('net bias shape = {}'.format(net.bias.shape))
     # net(x).shape = (4, 10)
