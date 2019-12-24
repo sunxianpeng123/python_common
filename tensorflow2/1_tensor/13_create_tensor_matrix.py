@@ -7,19 +7,27 @@
 """
 import tensorflow as tf
 import numpy as np
+import keras
+from keras import layers
 
-def tf_vector():
+def tf_matrix():
     """向量，w * x + b """
     print("##############1、tf_vector###################")
-    net = tf.keras.layers.Dense(10)#输入8维,输出10维，4*8 * kernel= 4 * 10
-    net.build((4,8))#4*8
+    x = tf.random.normal([4,784])
+
+    net = layers.Dense(10)
     # w
-    print(net.kernel)# shape=(8, 10) dtype=float32
-    # 1维，10个
-    print(net.bias)#shape=(10,) dtype=float32
+    net.build((4,784))
+    # w.T * x
+    print('net          print(dir)(x).shape = {}'.format(net(x).shape))
+    print('net kernel shape = {}'.format(net.kernel.shape))
+    print('net bias shape = {}'.format(net.bias.shape))
+    # net(x).shape = (4, 10)
+    # net kernel shape = (784, 10)
+    # net bias shape = (10,)
 
     return None
 
 
 if __name__ == '__main__':
-    tf_vector()
+    tf_matrix()
