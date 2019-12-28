@@ -39,3 +39,4 @@ opencv/photo/res.png
 common_used_package/shutil_test/zip_unpack/
 tensorflow2/keras_1/4_save_and_recover/weights/
 tensorflow2/keras_1/3_high_level_model/logs/
+tensorflow2/data/
