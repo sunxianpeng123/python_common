@@ -15,20 +15,21 @@ def tf_equal():
 
     arr_1 = np.asarray([1,2,2,2,5])
     b = tf.convert_to_tensor(arr_1)
-
+    print('a = {}'.format(a))
+    print('b = {}'.format(b))
+    # a = [1 2 3 2 5]
+    # b = [1 2 2 2 5]
+    print("=====================")
     #
     c = tf.equal(a,b)
     # 将 True 和 False 转为 0,1整数
     d = tf.cast(c,dtype=tf.int32)
     e = tf.reduce_sum(d)
 
-    print('a = {}'.format(a))
-    print('b = {}'.format(b))
     print('c = {}'.format(c))
     print('d = {}'.format(d))
     print('e = {}'.format(e))
-    # a = [1 2 3 2 5]
-    # b = [1 2 2 2 5]
+
     # c = [ True  True False  True  True]
     # d = [1 1 0 1 1]
     # e = 4
