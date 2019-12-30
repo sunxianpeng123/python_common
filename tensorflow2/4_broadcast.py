@@ -88,8 +88,8 @@ def tf_tile():
     print('t shape = {}'.format(t.shape))
     print('t_1 shape = {}'.format(t_1.shape))
     print('t_2 shape = {}'.format(t_2.shape))
-
     return None
+
 if __name__ == '__main__':
     tf_broadcast()
     tf_broadcast_to()
