@@ -2,7 +2,7 @@
 
 """
 @author: sunxianpeng
-@file: 3_norm.py
+@file: 3_norm_L1L2.py
 @time: 2019/12/29 19:52
 """
 """范数"""

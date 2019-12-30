@@ -94,7 +94,7 @@ if __name__ == '__main__':
     epochs = 10
     # x :[60k,28,28]  共有60000张图片，图片大小28*28
     # y:[60k]
-    data_dir = r'F:\PythonProjects\python_common\tensorflow2\data\mnist.npz'
+    data_dir = r'E:\PythonProjects\python_common\tensorflow2\data\mnist.npz'
     print(os.path.abspath(data_dir))
     (x,y),_ = datasets.mnist.load_data(data_dir)
 
