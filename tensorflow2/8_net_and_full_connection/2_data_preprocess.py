@@ -7,12 +7,14 @@
 
 import tensorflow as tf
 from tensorflow.keras import datasets
+import os
 
 def tf_shuffle():
     """shuffle的功能为打乱dataset中的元素，它有一个参数buffersize，
     表示打乱时使用的buffer的大小，建议舍的不要太小，一般是1000："""
     print("########################1、tf_shuffle ############################")
-    (x_train,y_train),(x_test,y_test) = datasets.cifar10.load_data()
+    data_dir =os.path.abspath(r'../data/mnist.npz')
+    (x_train,y_train),(x_test,y_test) = datasets.mnist.load_data(data_dir)
     db = tf.data.Dataset.from_tensor_slices((x_test,y_test))
     db =db.shuffle(10000)
     return None
@@ -22,7 +24,8 @@ def tf_map():
         注意map函数可以使用num_parallel_calls参数加速
     """
     print("########################2、tf_map ############################")
-    (x_train,y_train),(x_test,y_test) = datasets.cifar10.load_data()
+    data_dir =os.path.abspath(r'../data/mnist.npz')
+    (x_train,y_train),(x_test,y_test) = datasets.mnist.load_data(data_dir)
     db = tf.data.Dataset.from_tensor_slices((x_test,y_test))
     # 处理过程
     def preprocess(img,label):
@@ -46,7 +49,8 @@ def tf_map():
 def tf_batch():
     """batch就是将多个元素组合成batch，按照输入元素第一个维度"""
     print("########################3、tf_batch ############################")
-    (x_train,y_train),(x_test,y_test) = datasets.cifar10.load_data()
+    data_dir =os.path.abspath(r'../data/mnist.npz')
+    (x_train,y_train),(x_test,y_test) = datasets.mnist.load_data(data_dir)
     db = tf.data.Dataset.from_tensor_slices((x_test,y_test))
     # 处理过程
     def preprocess(img,label):
@@ -69,7 +73,8 @@ def tf_repeat():
     要限制epochs的数量，可以设置count参数。
     为了配合输出次数，一般默认repeat()空,即无限次"""
     print("########################4、tf_repeat #########################")
-    (x_train,y_train),(x_test,y_test) = datasets.cifar10.load_data()
+    data_dir =os.path.abspath(r'../data/mnist.npz')
+    (x_train,y_train),(x_test,y_test) = datasets.mnist.load_data(data_dir)
     db = tf.data.Dataset.from_tensor_slices((x_test,y_test))
     # 处理过程
     def preprocess(img,label):
@@ -87,7 +92,8 @@ def tf_repeat():
 
 def full_data_preprocess_example():
     print("###################5、full_data_preprocess_example ################")
-    (x_train,y_train),(x_test,y_test) = datasets.cifar10.load_data()
+    data_dir =os.path.abspath(r'../data/mnist.npz')
+    (x_train,y_train),(x_test,y_test) = datasets.mnist.load_data(data_dir)
     ds_train = tf.data.Dataset.from_tensor_slices((x_train,y_train))
     ds_test = tf.data.Dataset.from_tensor_slices((x_test,y_test))
     # 处理过程
@@ -110,3 +116,4 @@ if __name__ == '__main__':
     tf_shuffle()
     tf_map()
     tf_batch()
+    full_data_preprocess_example()
