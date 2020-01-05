@@ -13,7 +13,7 @@ import os
 from matplotlib import pyplot as plt
 
 import tensorflow as tf
-from keras import datasets, layers, optimizers, Sequential, metrics
+from tensorflow.keras import datasets, layers, optimizers, Sequential, metrics
 import datetime
 from keras.callbacks import TensorBoard
 
@@ -148,7 +148,6 @@ def train(db_train, db_test, model, epochs, optimizer,logs_dir):
             tf.summary.scalar('test accuracy', float(accuracy),step=epoch)
 
 if __name__ == '__main__':
-    """mnist手写字体识别"""
     batch_size = 128
     learning_rate = 1e-3
     epochs = 30
@@ -169,3 +168,15 @@ if __name__ == '__main__':
     model =get_model()
     optimizer = optimizers.Adam(lr=learning_rate)
     train(db_train,db_test,model,epochs,optimizer,logs_dir)
+
+    """
+    cmd
+    1、进入到项目目录
+        cd F:\PythonProjects\python_common\tensorflow2\11_visualization
+    2、cmd中执行命令 tensorboard --logdir 文件夹名字
+    
+    3、浏览器中输入地址
+        localhost:6006
+    
+    
+    """
