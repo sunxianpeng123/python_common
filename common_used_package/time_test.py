@@ -73,6 +73,6 @@ def other_time_op():
     # 2 t4 = 1575189907.4310002
 
 if __name__ == '__main__':
-    # between_struct_time_and_timestamp()
+    between_struct_time_and_timestamp()
     between_format_time_and_struct_time()
     other_time_op()
