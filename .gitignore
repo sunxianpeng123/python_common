@@ -45,3 +45,4 @@ tensorflow2/12_keras_api/chechpoint/
 tensorflow2/12_keras_api/checkpoints/
 tensorflow2/12_keras_api/saved_models/
 tensorflow2/12_keras_api/model/
+tensorflow2/12_keras_api/ckpt/

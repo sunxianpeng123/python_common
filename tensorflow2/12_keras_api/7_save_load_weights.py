@@ -6,7 +6,7 @@
 # @Project : python_common
 
 import tensorflow as tf
-from tensorflow.keras import datasets,layers,optimizers,Sequential,metrics
+from tensorflow.keras import datasets,layers,optimizers,Sequential,metrics,models
 from tensorflow import keras
 import time
 import os
@@ -152,7 +152,11 @@ if __name__ == '__main__':
     print("model_loaded########################")
     load_weights_path = save_weights_path
     model_loaded = MyModel()
+    # 报错
+    #
+    # AttributeError: 'MyModel' object has no attribute 'load_wetghts'
     model_loaded.load_wetghts(load_weights_path)
     loss, accuracy = model_loaded.evaluate(db_test)
     print('restored model weights, accuracy = {}'.format(accuracy))
+    # tf.train.Saver
 

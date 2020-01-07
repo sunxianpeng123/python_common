@@ -98,6 +98,10 @@ def save_model(model, save_model_path):
     """保存模型"""
     if os.path.exists(save_model_path) == False:
         os.makedirs(save_model_path)
+    # 报错
+    # NotImplementedError: The `save` method requires the model to be a Functional model or a Sequential model.
+    # It does not work for subclassed models, because such models are defined via the body of a Python method,
+    # which isn't safely serializable. Consider using `save_weights`, in order to save the weights of the model.
     model.save(save_model_path)
     print('save model done!')
 
