@@ -10,6 +10,8 @@ from tensorflow.keras import layers
 
 
 def tf_pooling():
+    """下采样，缩小"""
+    print("#####################1、tf_pooling ###################")
     x = tf.random.normal([1, 32, 32, 3])
     # 大小为2*2的核，步长为2
     # (32 - 2 ) / 2 + 1 = 16
@@ -28,6 +30,25 @@ def tf_pooling():
 
     return None
 
+def tf_upsample():
+    """上采样，放大"""
+    print("#####################2、tf_upsample ###################")
+    x = tf.random.normal([1, 7, 7, 4])
+    layer = layers.UpSampling2D(size=3)
+    out = layer(x)
+    print(out.shape)
+    # (1, 21, 21, 4)
+    print("==============")
+    layer = layers.UpSampling2D(size=2)
+    out = layer(x)
+    print(out.shape)
+    # (1, 14, 14, 4)
+
+
+
+    return None
+
 
 if __name__ == '__main__':
     tf_pooling()
+    tf_upsample()
