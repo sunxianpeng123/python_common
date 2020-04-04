@@ -16,12 +16,14 @@ def add_partition(table_name,platform_id):
     one ="ALTER TABLE parquet." + table_name + " ADD IF NOT EXISTS PARTITION(date="
     two = ",plat="+str(platform_id)
 
-    if table_name == "sv_anchor_basic_info":
-        three=") LOCATION 'hdfs://master20:8020/user/spark/parquet/short_video/anchor_basic_info/date="
-    if table_name == "sv_fans_info":
-        three=") LOCATION 'hdfs://master20:8020/user/spark/parquet/short_video/fans_info/date="
-    if table_name == "sv_fans_list_info":
-        three=") LOCATION 'hdfs://master20:8020/user/spark/parquet/short_video/fans_list_info/date="
+    if table_name == "live_anchor_basic_info":
+        three=") LOCATION 'hdfs://master20:8020/user/spark/parquet/live_show/anchor_basic_info/date="
+    if table_name == "live_fans_info":
+        three=") LOCATION 'hdfs://master20:8020/user/spark/parquet/live_show/fans_info/date="
+    if table_name == "live_fans_list_info":
+        three=") LOCATION 'hdfs://master20:8020/user/spark/parquet/live_show/fans_list_info/date="
+    if table_name == "live_goods_info":
+        three=") LOCATION 'hdfs://master20:8020/user/spark/parquet/live_show/goods_info/date="
 
     four = "/plat="+str(platform_id) +"';"
 
@@ -51,11 +53,12 @@ def add_partition(table_name,platform_id):
 
 
 if __name__ == '__main__':
-    anchor_basic_table_name = 'sv_anchor_basic_info'
-    fans_info_table_name = 'sv_fans_info'
-    fans_list_table_name = 'sv_fans_list_info'
+    anchor_basic_table_name = 'live_anchor_basic_info'
+    fans_info_table_name = 'live_fans_info'
+    fans_list_table_name = 'live_fans_list_info'
+    goods_info_table_name = 'live_goods_info'
 
-    tables = [anchor_basic_table_name,fans_info_table_name,fans_list_table_name]
+    tables = [anchor_basic_table_name,fans_info_table_name,fans_list_table_name,goods_info_table_name]
     plats = [71]
     print(plats)
     # ALTER TABLE parquet.label_parquet ADD IF NOT EXISTS PARTITION(plat=201,date=20190527,group=999) LOCATION 'hdfs://master20:8020/tmp/repartition/comment/plat=201/date=20190527/group=999';
