@@ -10,6 +10,7 @@ import numpy as np
 
 def tf_fill():
     """使用指定值填充tensor"""
+    print("#############使用指定值填充tensor###############")
     t_1 = tf.fill([2,2],0)
     t_2 = tf.fill([2,2],0.)
     t_3 = tf.fill([2,2],1)

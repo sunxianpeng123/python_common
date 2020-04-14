@@ -55,4 +55,4 @@ def bool_int_transofrm():
 if __name__ == '__main__':
     np_tensor_transform()
     bool_int_transofrm()
-    tf.Tenso
+

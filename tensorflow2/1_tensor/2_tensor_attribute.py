@@ -15,7 +15,7 @@ def device_info():
     with tf.device('cpu'):
         a = tf.constant([1])
 
-    with tf.device('gpu'):#在gpu上创建tensor，无gpu时会在cpu创建
+    with tf.device('cpu'):#在gpu上创建tensor，无gpu时会在cpu创建
         b = tf.range(4)
     # tensor在设备上的转换
     # aa = a.gpu()#无gpu会报错
@@ -40,7 +40,7 @@ def device_info():
     # b_np = [0 1 2 3]
     print("tensor常用属性=======================================")
     # b.ndim和 tf.rank(b)可以查看数据的维度,即特征数量. eg:1.1为0维，[1.1]为1维
-    ones = tf.ones([3,4,2])
+    ones = tf.ones([3,4,2])# 3 个 4 行列矩阵
     print('b.ndim = {}'.format(b.ndim))
     print('b.rank = {}'.format(tf.rank(b)))
     print('tf.ones rank = {}'.format(tf.rank(ones)))
