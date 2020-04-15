@@ -13,7 +13,7 @@ def tf_transpose():
     t = tf.random.normal((4,3,2,1))
     # 将t的维度信息倒置
     t_1 = tf.transpose(t)
-    # 指定t_2的维度顺序，即perm指的是t中维度的下标
+    # 指定t_2的维度顺序，即perm指的是t中维度的下标,按照下标顺序指定t的shape
     t_2 = tf.transpose(t,perm=[0,1,3,2])
 
     print('t shape ={}'.format(t.shape))
