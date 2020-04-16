@@ -8,7 +8,7 @@
 import tensorflow as tf
 
 def tf_pow_sqrt():
-    """求矩阵中对应元素的平方和开方"""
+    """求矩阵中 对应元素 的平方和开方"""
     # t = tf.random.normal([2,3])
     t = tf.fill([2,2],4.)
     # 求三次方，下面两种方法相同

@@ -12,7 +12,7 @@ def test():
     W = tf.ones([2,1])
     b = tf.constant(0.1)
 
-    y = x@W + b
+    y = x @ W + b
     print(y)
     print("==========================")
 
