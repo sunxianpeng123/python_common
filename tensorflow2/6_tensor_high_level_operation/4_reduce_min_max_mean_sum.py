@@ -40,12 +40,14 @@ def tf_reduce_min_max_mean_sum():
     # t_4 = -0.2001330852508545
     # t_4 shape = ()
     print("求解指定维度的统计值======================")
-    # axis=1 表示以第二个维度为标准，求解第二个维度上每组数据的对应值，
-    # 即第二个维度每组数据有三个，求解三个值中的对应值，得到2维tensor
-    t_5 = tf.reduce_min(t,axis=1)
-    t_6 = tf.reduce_max(t,axis=1)
-    t_7 = tf.reduce_mean(t,axis=1)
-    t_8 = tf.reduce_sum(t,axis=1)
+    # axis 表示下标索引
+    # axis=1 表示以第2个维度上的shape分组，即每组数据有三个
+
+    print(t.shape)
+    t_5 = tf.reduce_min(t, axis=1)#
+    t_6 = tf.reduce_max(t, axis=1)
+    t_7 = tf.reduce_mean(t, axis=1)
+    t_8 = tf.reduce_sum(t, axis=1)
     print('t = {}'.format(t))
     print('t_5 = {}'.format(t_5))
     print('t_5 shape = {}'.format(t_5.shape))

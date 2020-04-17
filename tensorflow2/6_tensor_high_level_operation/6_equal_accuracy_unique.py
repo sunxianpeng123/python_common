@@ -20,7 +20,7 @@ def tf_equal():
     # a = [1 2 3 2 5]
     # b = [1 2 2 2 5]
     print("=====================")
-    #
+    #比较两个tensor中的每个元素是否相等，相等则为 True，否则为 False
     c = tf.equal(a,b)
     # 将 True 和 False 转为 0,1整数
     d = tf.cast(c,dtype=tf.int32)
@@ -45,7 +45,7 @@ def tf_accuracy():
     # [[0.1  0.2  0.7 ]
     #  [0.9  0.05 0.05]], shape=(2, 3), dtype=float32)
 
-    # 求出每行最大值的索引位置，相当于取出每个样本最大概率的分类，转成int32
+    # 求出每行最大值的下标索引，相当于取出每个样本最大概率的分类，转成int32
     pred = tf.cast(tf.argmax(a,axis=1),dtype=tf.int32)
     # 已知样本的分类标签
     y = tf.constant([2,1])

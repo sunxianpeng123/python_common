@@ -12,14 +12,13 @@ def tf_argmax():
     """求解tensor中最大值的索引 """
     print("##################1、tf_argmax#####################")
     t = tf.random.normal([2,3])
-
     # 下面两组解相同
     # axis=0 表示以第一个维度为标准，求解每组数据(每组数据两个值，即求每列)中的最大值索引
-    t_1 = tf.argmax(t)
-    t_2 = tf.argmax(t,axis=0)
+    t_1 = tf.argmax(t) #axis 默认为 0
+    t_2 = tf.argmax(t, axis=0)
 
-    t_3 = tf.argmax(t,axis=1)
-
+    t_3 = tf.argmax(t, axis=1)
+    print (t.shape)
     print('t = {}'.format(t))
     print('t_1 = {}'.format(t_1))
     print('t_2 = {}'.format(t_2))
@@ -33,15 +32,14 @@ def tf_argmax():
 
 def tf_argmin():
     """求解tensor中最小值的索引 """
-    print("##################1、tf_argmin#####################")
+    print("##################2、tf_argmin#####################")
     t = tf.random.normal([2,3])
 
     # 下面两组解相同
     # axis=0 表示以第一个维度为标准，求解每组数据(每组数据两个值，即求每列)中的最小值索引
     t_1 = tf.argmin(t)
-    t_2 = tf.argmin(t,axis=0)
-
-    t_3 = tf.argmin(t,axis=1)
+    t_2 = tf.argmin(t, axis=0)
+    t_3 = tf.argmin(t, axis=1)
 
     print('t = {}'.format(t))
     print('t_1 = {}'.format(t_1))
