@@ -9,8 +9,8 @@ print(tf.__version__)
 
 def tf_clip_by_global_norm():
     """ global_norm 是所有梯度的平方和
-        Gradient Clipping的引入是为了处理gradient explosion或者gradients vanishing的问题。当在一次迭代中权重的更新过于迅猛的话，
-        很容易导致loss divergence。Gradient Clipping的直观作用就是让权重的更新限制在一个合适的范围。
+        Gradient Clipping的引入是为了处理 gradient explosion (梯度爆炸) 或者 gradients vanishing （梯度消失）的问题。当在一次迭代中权重的更新过于迅猛的话，
+        很容易导致 loss divergence。Gradient Clipping (梯度裁剪)的直观作用就是让权重的更新限制在一个合适的范围。
         具体的细节是
         １．在solver中先设置一个clip_gradient
         ２．在前向传播与反向传播之后，我们会得到每个权重的梯度diff，这时不像通常那样直接使用这些梯度进行权重更新，

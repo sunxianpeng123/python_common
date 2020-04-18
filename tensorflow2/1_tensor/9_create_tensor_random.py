@@ -63,9 +63,10 @@ def tf_uniform():
 
     t_1 = tf.random.uniform([2,2],minval=0,maxval=1)
     t_2 = tf.random.uniform([2,2],minval=0,maxval=100,dtype=tf.int32)
-    print(t_2)
+    print(t_1)
     print(t_1.dtype)
     print('t_1 shape = {}'.format(t_1.shape))
+    print(t_2)
     print(t_2.dtype)
     print('t_2 shape = {}'.format(t_2.shape))
     # <dtype: 'float32'>
@@ -76,7 +77,7 @@ def tf_uniform():
 
 def random_permutation():
     """随机打散"""
-    print("##############2、随机打散###################")
+    print("##############3、随机打散###################")
     idx = tf.range(10)#10张照片
     print('before shuffle = {}'.format(idx))
     idx = tf.random.shuffle(idx)

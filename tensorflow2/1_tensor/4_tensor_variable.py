@@ -44,7 +44,7 @@ def variable_info():
     return None
 
 def np_variable_transform():
-    print("################3、variable转numpy################")
+    print("################3、numpy转variable################")
     a = tf.range(5)
     b = tf.Variable(a)
 
@@ -57,7 +57,7 @@ def np_variable_transform():
     # a.dtype = <dtype: 'int32'>
     # b = <tf.Variable 'Variable:0' shape=(5,) dtype=int32, numpy=array([0, 1, 2, 3, 4])>
     # b.dtype = <dtype: 'int32'>
-    print("################4、numpy转variable################")
+    print("################4、variable转numpy################")
     a_np = a.numpy()
     b_np = b.numpy()
     print('a_np = {}'.format(a_np))
@@ -74,10 +74,13 @@ def np_variable_transform():
     c_int = int(c)
     c_float = float(c)
 
+    print(c)
     print('c = {}'.format(c))
     print('c.dtype = {}'.format(c.dtype))
+    print(c_int)
     print('c_int = {}'.format(c_int))
     print('c_int type = {}'.format(type(c_int)))
+    print(c_float)
     print('c_float = {}'.format(c_float))
     print('c_float type = {}'.format(type(c_float)))
 

@@ -8,7 +8,7 @@
 import tensorflow as tf
 
 def index_start_end_step():
-    t = tf.random.normal([4,28,28,3])
+    t = tf.random.normal([4,28,28,3])#4张 大小为28*28*3的图片
 
     t_1 = t[0:2,:,:,:]
     t_2 = t[:,0:28:2,0:28:2,:]

@@ -25,9 +25,7 @@ def tf_clip_by_norm():
     t_2 = tf.clip_by_norm(t,15)
     t_2_norm = tf.norm(t_2)
     print('t_2 norm = {}'.format(t_2_norm))#t_2 norm = 15.0
-
     return None
-
 
 
 if __name__ == '__main__':

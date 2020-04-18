@@ -48,7 +48,7 @@ def tf_split():
 
     t = tf.stack([a,b],axis=0) #t shape = (2, 4, 35, 8)
 
-    # 在 axis=3即第4个维度分开，分开后的数量是num_or_size_splits，并且num_or_size_splits必须可以整除axis指定维度处的shape大小
+    # 在 axis=3(即第4个维度)分开，分开后的数量是 num_or_size_splits，并且 num_or_size_splits 必须可以整除axis指定维度处的 shape 大小
     t_1 = tf.split(t,axis=3,num_or_size_splits=2)
     t_1_1 = t_1[0]
     t_1_2 = t_1[1]
@@ -64,8 +64,8 @@ def tf_split():
     # t_1_2 shape = (2, 4, 35, 4)
     print("===============")
     # 在 axis=3即第4个维度分开,分开后的每个tensor包含的数量大小根据num_or_size_splits指定得到
-    # 并且num_or_size_splits中的数字之和必须和指定的axis处shape大小相同
-    # 并且返回的顺序和num_or_size_splits的顺序相同
+    # 并且num_or_size_splits中的  数字之和 必须和指定的axis处 shape 大小相同
+    # 并且返回的顺序和 num_or_size_splits 的顺序相同
     t_2 = tf.split(t,axis=3,num_or_size_splits=[2,2,4])
     t_2_1 = t_2[0]
     t_2_2 = t_2[1]

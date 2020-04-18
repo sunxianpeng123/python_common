@@ -28,6 +28,7 @@ def constant():
     print("数值常量===================================")
     constant_1 = tf.constant(1)
     print(constant_1)
+    print(constant_1.shape == ())
     print('constant_1 = {}'.format(constant_1))
 
     constant_2 = tf.constant(1.)
@@ -47,6 +48,7 @@ def constant():
     # constant_4 = 2.0
     print("布尔常量===================================")
     bool_1 = tf.constant([True,False])
+    print(bool_1.shape == (2,))
     print(bool_1)
     print('bool_1 = {}'.format(bool_1))
     # tf.Tensor([ True False], shape=(2,), dtype=bool)

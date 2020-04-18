@@ -11,7 +11,7 @@ import numpy as np
 def tf_ones_and_ones_like():
     """创建全为 1 的tensor"""
     print("##########2、从 tf_ones_and_ones_like 构建tensor#############")
-    t_1 = tf.ones(1)
+    t_1 = tf.ones(1) # <==> tf.ones([1])
     t_2 = tf.ones([])
     t_3 = tf.ones([2])
     t_4 = tf.ones([2,3])

@@ -13,7 +13,7 @@ from keras import layers
 def tf_matrix():
     """向量，w * x + b """
     print("##############1、tf_vector###################")
-    x = tf.random.normal([4,784])
+    x = tf.random.normal([4,784])# 4个 784维向量
 
     net = layers.Dense(10)
     # w
