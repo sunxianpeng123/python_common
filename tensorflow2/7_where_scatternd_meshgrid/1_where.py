@@ -16,7 +16,7 @@ def tf_where():
     mask = a > 0#大于0位True，小于0位False
 
     # 以第一个维度为标准，取出为True的数据，组成一个新的tensor
-    b = tf.boolean_mask(a,mask)
+    b = tf.boolean_mask(a, mask)#取出mask为true的数据
     print('a = {}'.format(a))
     print('mask = {}'.format(mask))
     print('b = {}'.format(b))
@@ -29,10 +29,9 @@ def tf_where():
     #  [False False  True]]
 
     # b = [0.78106815 1.0700579  0.20802023]
-
     print("使用where 实现和b相同结果===========")
     indices = tf.where(mask)#得到为True的坐标
-    c = tf.gather_nd(a,indices)
+    c = tf.gather_nd(a, indices)#根据坐标获取数据
 
     print('indices = {}'.format(indices))
     print('c = {}'.format(c))
@@ -45,17 +44,17 @@ def tf_where():
     return None
 
 def tf_where_2():
-    """传入三个参数，根据mask，true时从第二个参数中选择数据，false从第三个参数选择数据
+    """传入三个参数，根据mask，根据mask中的true和false选择数据，
+    true时从第二个参数中选择数据，false从第三个参数选择数据。
     所需数据的坐标和true or false 在mask中的坐标一致"""
     print("#################1、tf_where_2###################")
     mask = tf.constant([ [True, True, False],
                          [True, False, False],
                          [True, True, False]])
-
     A = tf.ones([3, 3])
     B = tf.zeros([3, 3])
 
-    C = tf.where(mask,A,B)
+    C = tf.where(mask, A, B)
 
     print('C = {}'.format(C))
     # C = [[1. 1. 0.]

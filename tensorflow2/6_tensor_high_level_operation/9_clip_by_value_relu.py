@@ -9,14 +9,14 @@ import tensorflow as tf
 
 def tf_clip_by_value():
     """设置张量中值得取值范围"""
-    print("##############1、tf_clip_by_value #################")
+    print("##############1、tf.maximum  minimum  clip_by_value#################")
     t = tf.random.uniform([3,3],maxval=10,minval=0,dtype=tf.int32)
     # 实现的max(k,x)函数，如果x<k，则x设置为k，否则不变，此处tensor中值小于3则设置为3，否则不变
     t_1 = tf.maximum(t, 3)
     # 实现的min(k,x)函数，如果x>k，则x设置为k，否则不变，此处tensor中值大于4则设置为4，否则不变
     t_2 = tf.minimum(t, 4)
     # 实现将tensor中的值范围设置一个范围,下面三种方式结果相同
-    t_3 = tf.clip_by_value(t, 2, 5)
+    t_3 = tf.clip_by_value(t, 2, 5)#小于2 设置变为2 ，大于5变为 5
     t_4 = tf.maximum(tf.minimum(t,5),2)
     t_5 = tf.minimum(tf.maximum(t,2),5)
 

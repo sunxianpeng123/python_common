@@ -113,7 +113,7 @@ def tf_topk_accuracy():
 
     res = []
     for i in range(1,k + 1):
-        # 取出前index行，并将前k行tensor进行转置，-1表示系统 自动求解转置 的形状大小
+        # 取出前index行，并将前k行tensor进行转置，-1 表示系统 自动求解转置 的形状大小
         t = tf.reshape(correct[:i], [-1])
         # 将 boolean 类型转成 float 类型，即转成 1.0 和 0.0
         correct_i = tf.cast(t,dtype=tf.float32)
