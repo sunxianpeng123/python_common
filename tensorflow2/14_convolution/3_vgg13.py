@@ -17,7 +17,7 @@ def prepross(x, y):
     x = 2 * tf.cast(x, dtype=tf.float32) / 255. - 1.
     y = tf.cast(y, dtype=tf.int32)
     return x, y
-
+ 
 def get_vgg13_model():
     """vgg13, 13指的是卷积层和全连接层"""
     """卷积层"""

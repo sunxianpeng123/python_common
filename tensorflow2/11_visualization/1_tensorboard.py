@@ -168,15 +168,11 @@ if __name__ == '__main__':
     model =get_model()
     optimizer = optimizers.Adam(lr=learning_rate)
     train(db_train,db_test,model,epochs,optimizer,logs_dir)
-
     """
     cmd
     1、进入到项目目录
         cd F:\PythonProjects\python_common\tensorflow2\11_visualization
     2、cmd中执行命令 tensorboard --logdir 文件夹名字
-    
     3、浏览器中输入地址
         localhost:6006
-    
-    
     """
