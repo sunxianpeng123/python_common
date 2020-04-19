@@ -45,13 +45,13 @@ def net_forward(epochs,db_train,db_test,lr):
             x = tf.reshape(x,[-1,28*28])
             with tf.GradientTape() as tape:#tensorfl自动求导,但是只会跟中tf.Variable类型的自动求导
                 # layer1
-                h1 = x@w1 + tf.broadcast_to(b1,[x.shape[0],512])
+                h1 = x @ w1 + tf.broadcast_to(b1,[x.shape[0],512])
                 h1 = tf.nn.relu(h1)
                 # layer2
-                h2 = h1@w2 + b2
+                h2 = h1 @ w2 + b2
                 h2 = tf.nn.relu(h2)
                 # output
-                out = h2@w3 + b3
+                out = h2 @ w3 + b3
                 #计算误差
                 # [b, 10] - [b, 10]
                 # 求出每个样本的输出和真实值之间的平方和
@@ -120,13 +120,14 @@ if __name__ == '__main__':
     # 构建训练数据
     db_train = tf.data.Dataset.from_tensor_slices((x_train,y_train)).shuffle(60000).batch(128).map(preprocess).repeat(epochs)
     db_test = tf.data.Dataset.from_tensor_slices((x_test,y_test)).shuffle(10000).batch(128).map(preprocess)
-    x,y = next(iter(db_train))
+    x, y = next(iter(db_train))
     print('train sample:', x.shape, y.shape)
 
 
     print('train data count = {}'.format(len(x_train)))
     print('test data count = {}'.format(len(x_test)))
     #前向传播算法
+    print("===================3、前向传播算法=======================")
     net_forward(epochs,db_train,db_test,lr)
 
 

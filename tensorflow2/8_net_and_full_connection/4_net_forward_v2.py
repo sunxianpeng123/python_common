@@ -23,6 +23,7 @@ def check_dataset_attr(x,y):
 
 def check_batch_data_attr(train_data):
     """查看用于模型的数据集的属性"""
+
     train_iter = iter(train_data)#迭代器
     sample = next(train_iter)#从迭代器中取出下一个
     # 查看一个批次的图片的数据形状和标签形状
@@ -67,13 +68,13 @@ def net_forward(epochs,db_train,db_test,lr):
             x = tf.reshape(x,[-1,28*28])
             with tf.GradientTape() as tape:#tensorfl自动求导,但是只会跟中tf.Variable类型的自动求导
                 # [b,784] @ [784,256] + [256] => [b,256] + [256] => [b,256] + [b,256]
-                h1 = x@w1 + tf.broadcast_to(b1,[x.shape[0],256])
+                h1 = x @ w1 + tf.broadcast_to(b1,[x.shape[0],256])
                 h1 = tf.nn.relu(h1)
                 # [b, 256] => [b,128]
-                h2 = h1@w2 + b2
+                h2 = h1 @ w2 + b2
                 h2 = tf.nn.relu(h2)
                 # [b, 128] => [b,10]
-                out = h2@w3 + b3
+                out = h2 @ w3 + b3
                 #计算误差
                 # out:[b,10]
                 # y:[b] => [b,10]
@@ -134,7 +135,7 @@ if __name__ == '__main__':
     epochs = 10
     # x :[60k,28,28]  共有60000张图片，图片大小28*28
     # y:[60k]
-    data_dir =os.path.abspath(r'./data/mnist.npz')
+    data_dir =os.path.abspath(r'../data/mnist.npz')
     # F:\PythonProjects\python_common\tensorflow2\data\mnist.npz
     print(data_dir)
 
@@ -148,18 +149,19 @@ if __name__ == '__main__':
     # 数归一化，x的像素转到 0-1之间
     x_train = x_train / 255.
     x_test = x_test / 255.
-
-    # check_dataset_attr(x,y)
+    print("===================1、查看数据集的属性===================")
+    check_dataset_attr(x_train,y_train)
 
     # 构建训练数据
     db_train = tf.data.Dataset.from_tensor_slices((x_train,y_train)).batch(128)
     db_test = tf.data.Dataset.from_tensor_slices((x_test,y_test)).batch(128)
-
-    # check_batch_data_attr(train_data)
+    print("===================2、查看批数据集的属性===================")
+    check_batch_data_attr(db_train)
 
     print('train data count = {}'.format(len(x_train)))
     print('test data count = {}'.format(len(x_test)))
     #前向传播算法
+    print("===================3、前向传播算法=======================")
     net_forward(epochs,db_train,db_test,lr)
 
 

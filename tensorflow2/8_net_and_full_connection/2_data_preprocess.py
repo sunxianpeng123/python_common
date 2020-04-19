@@ -11,7 +11,8 @@ import os
 
 def tf_shuffle():
     """shuffle的功能为打乱dataset中的元素，它有一个参数buffersize，
-    表示打乱时使用的buffer的大小，建议舍的不要太小，一般是1000："""
+    表示打乱时使用的buffer的大小，建议设的不要太小，一般是1000：
+    将数据打乱，数值越大，混乱程度越大"""
     print("########################1、tf_shuffle ############################")
     data_dir =os.path.abspath(r'../data/mnist.npz')
     (x_train,y_train),(x_test,y_test) = datasets.mnist.load_data(data_dir)
@@ -24,7 +25,7 @@ def tf_map():
         注意map函数可以使用num_parallel_calls参数加速
     """
     print("########################2、tf_map ############################")
-    data_dir =os.path.abspath(r'../data/mnist.npz')
+    data_dir = os.path.abspath(r'../data/mnist.npz')
     (x_train,y_train),(x_test,y_test) = datasets.mnist.load_data(data_dir)
     db = tf.data.Dataset.from_tensor_slices((x_test,y_test))
     # 处理过程
@@ -37,19 +38,20 @@ def tf_map():
 
     db = db.map(preprocess)
 
-    res = next(iter(db))
     # 取出一张图片和标签，并查看对应的tensor形状
+    res = next(iter(db))
     print('img shape = {}, label shape = {}'.format(res[0].shape, res[1].shape))
     # 查看一张图片的onehot编码
-    print('label one hot value = {}'.format(res[1][:100]))
+    print('label one hot value = {}'.format(res[1][:10]))
     # img shape = (32, 32, 3), label shape = (1, 10)
     # [[0. 0. 0. 1. 0. 0. 0. 0. 0. 0.]]
     return None
 
 def tf_batch():
-    """batch就是将多个元素组合成batch，按照输入元素第一个维度"""
+    """batch 就是将多个元素组合成batch，按照输入元素第一个维度
+    按照顺序取出batch行数据，最后一次输出可能小于batch"""
     print("########################3、tf_batch ############################")
-    data_dir =os.path.abspath(r'../data/mnist.npz')
+    data_dir = os.path.abspath(r'../data/mnist.npz')
     (x_train,y_train),(x_test,y_test) = datasets.mnist.load_data(data_dir)
     db = tf.data.Dataset.from_tensor_slices((x_test,y_test))
     # 处理过程
@@ -69,9 +71,8 @@ def tf_batch():
     return None
 
 def tf_repeat():
-    """repeat 方法在读取到组后的数据时重启数据集。
-    要限制epochs的数量，可以设置count参数。
-    为了配合输出次数，一般默认repeat()空,即无限次"""
+    """repeat 方法在读取到组后的数据时重启数据集,要限制epochs的数量，可以设置count参数,为了配合输出次数，一般默认repeat()空,即无限次,
+    数据集重复了指定次数, repeat()在batch操作输出完毕后再执行,若在之前，相当于先把整个数据集复制两次,为了配合输出次数，一般默认repeat()空"""
     print("########################4、tf_repeat #########################")
     data_dir =os.path.abspath(r'../data/mnist.npz')
     (x_train,y_train),(x_test,y_test) = datasets.mnist.load_data(data_dir)
@@ -86,7 +87,7 @@ def tf_repeat():
         label = tf.squeeze(label)
         return img,label
 
-    epochs = 10
+    epochs = 10#
     db = db.map(preprocess).batch(32).repeat(epochs)
     return None
 
@@ -116,4 +117,5 @@ if __name__ == '__main__':
     tf_shuffle()
     tf_map()
     tf_batch()
+    tf_repeat()
     full_data_preprocess_example()

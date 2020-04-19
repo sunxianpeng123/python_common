@@ -9,6 +9,8 @@
 import tensorflow as tf
 from tensorflow.keras import datasets
 from matplotlib import pyplot as plt
+import os
+
 
 def show_img(img):
     plt.imshow(img)
@@ -17,7 +19,9 @@ def show_img(img):
 def tf_mnist():
     """加载 mnist数据集，及查看 mnist 数据集的信息"""
     print("########################1、tf_mnist############################")
-    mnist_path = r'E:\PythonProjects\python_common\tensorflow2\data\mnist.npz'
+    # mnist_path = r'F:\PythonProjects\python_common\tensorflow2\data\mnist.npz'
+    mnist_path = os.path.abspath(r'../data/mnist.npz')
+    # exit(0)
     (x_train,y_train),(x_test,y_test) = datasets.mnist.load_data(mnist_path)
     print('x_train shape = {},y_train shape = {}'.format(x_train.shape,y_train.shape))
     # x中值得最小、最大和平均值
@@ -74,6 +78,6 @@ def tf_data_dataset():
 
 
 if __name__ == '__main__':
-    tf_mnist()
+    # tf_mnist()
     tf_cifar_10_100()
-    tf_data_dataset()
+    # tf_data_dataset()

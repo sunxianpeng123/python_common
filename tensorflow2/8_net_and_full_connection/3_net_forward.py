@@ -48,19 +48,18 @@ def net_forward(epochs,train_data,lr):
     for epoch in range(epochs):  # iterate db for 10
         # enumerate()每次计算完一个批次后，step就会+1，即相当于一个批次的编号，所有编号的批次加起来就是整个数据集
         for step, (x, y) in enumerate(train_data):
-
             # 循环拿到的数据形状 ：x shape = [128,28,28], y shape = [128]
             # h1 = x@w1 + 1 中，要求x的维度为[b,28*28],所以需要进行维度变换
             x = tf.reshape(x,[-1,28*28])
             with tf.GradientTape() as tape:#tensorfl自动求导,但是只会跟中tf.Variable类型的自动求导
                 # [b,784] @ [784,256] + [256] => [b,256] + [256] => [b,256] + [b,256]
-                h1 = x@w1 + tf.broadcast_to(b1,[x.shape[0],256])
+                h1 = x @ w1 + tf.broadcast_to(b1,[x.shape[0],256])# x * w1 + b1
                 h1 = tf.nn.relu(h1)
                 # [b, 256] => [b,128]
-                h2 = h1@w2 + b2
+                h2 = h1 @ w2 + b2
                 h2 = tf.nn.relu(h2)
                 # [b, 128] => [b,10]
-                out = h2@w3 + b3
+                out = h2 @ w3 + b3
                 #计算误差
                 # out:[b,10]
                 # y:[b] => [b,10]
@@ -94,25 +93,25 @@ if __name__ == '__main__':
     epochs = 10
     # x :[60k,28,28]  共有60000张图片，图片大小28*28
     # y:[60k]
-    data_dir = r'E:\PythonProjects\python_common\tensorflow2\data\mnist.npz'
+    data_dir = os.path.abspath("..\data\mnist.npz")#r'E:\PythonProjects\python_common\tensorflow2\data\mnist.npz'
     print(os.path.abspath(data_dir))
-    (x,y),_ = datasets.mnist.load_data(data_dir)
+    (x,y),(x_test,y_test) = datasets.mnist.load_data(data_dir)
 
     #转成tensor
-    x = tf.convert_to_tensor(x,dtype=tf.float32)
-    y = tf.convert_to_tensor(y,dtype=tf.int32)
+    x = tf.convert_to_tensor(x, dtype=tf.float32)
+    y = tf.convert_to_tensor(y, dtype=tf.int32)
     # 数归一化，x的像素转到 0-1之间
     x = x / 255.
-
-    # check_dataset_attr(x,y)
-
+    print("===================1、查看数据集的属性===================")
+    check_dataset_attr(x,y)
     # 构建训练数据
     train_data = tf.data.Dataset.from_tensor_slices((x,y)).batch(128)
 
-    # check_batch_data_attr(train_data)
+    check_batch_data_attr(train_data)
 
     print('train data count = {}'.format(len(x)))
     #前向传播算法
+    print("===================3、前向传播算法=======================")
     net_forward(epochs,train_data,lr)
 
 

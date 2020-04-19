@@ -14,21 +14,21 @@ import matplotlib.pyplot as plt
 
 def tf_meshgrid():
     """ tf.meshgrid()用于从数组a和b产生网格。生成的网格矩阵A和B大小是相同的，它也可以是更高维的。"""
-
     print("######################1、tf_meshgrid #######################")
     print("使用numpy生成二维网格数据==============")
     # 无法使用gpu加速
     points_np = []
+    print(" np.linspace(-2, 2, 5) = {}".format( np.linspace(-2, 2, 5)))
     for y in np.linspace(-2, 2, 5):
         for x in np.linspace(-2, 2, 5):
             points_np.append([x,y])
-    points_np = np.array(points_np)
+    points_np = np.array(points_np)#生成二维空间中一系列的坐标点
     # print(points_np)
-    print("使用numpy生成二维网格数据==============")
+    print("使用tensorflow生成二维网格数据==============")
     y = tf.linspace(-2., 2, 5)
     x = tf.linspace(-2., 2, 5)
-    # 使用 tf.meshgrid 方法，产生两个指定形状的矩阵，空间中的一个点的坐标，
-    # 由 tf.meshgrid 生成的所有矩阵中相同位置的数值组成
+    # 使用 tf.meshgrid 方法，产生两个指定形状的矩阵，
+    # 空间中的一个点的坐标由 tf.meshgrid 生成的所有矩阵中相同位置的数值组成
     points_tf_x, points_tf_y = tf.meshgrid(x, y)
     print('points_tf_x = {}'.format(points_tf_x))
     print('points_tf_y = {}'.format(points_tf_y))
@@ -44,7 +44,7 @@ def tf_meshgrid():
     #  [ 1.  1.  1.  1.  1.]
     #  [ 2.  2.  2.  2.  2.]]
     # 将空间中点的坐标合并到一个tensor中,需要添加一个维度
-    points_tf = tf.stack([points_tf_x,points_tf_y],axis=2)# shape=(5, 5, 2)
+    points_tf = tf.stack([points_tf_x,points_tf_y],axis=2)# shape=(5, 5, 2) 5个 5行2列的数据
     # print(points_tf)
 
     return None
@@ -58,10 +58,13 @@ def plot_contour():
     # [50, 50]
     point_x, point_y = tf.meshgrid(x, y)
     # [50, 50, 2]
+    print(point_x.shape)#(500, 500)
     points = tf.stack([point_x, point_y], axis=2)
+    print("points.shape = {}".format(points.shape))#(500, 500, 2)
     # points = tf.reshape(points, [-1, 2])
     print('points:', points.shape)
-
+    # 取axis=2上第0索引的数据，
+    print("points[..., 0].shape = {}".format(points[..., 0].shape))#(500, 500)
     z = tf.math.sin(points[..., 0]) + tf.math.sin(points[..., 1])
     print('z:', z.shape)
 
