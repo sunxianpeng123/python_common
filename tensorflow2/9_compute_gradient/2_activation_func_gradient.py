@@ -54,7 +54,7 @@ def tf_relu_gradient():
     with tf.GradientTape(persistent=True) as tape:
         tape.watch(a)
         y_1 = tf.nn.relu(a)
-        y_2 =tf.nn.leaky_relu(a)
+        y_2 = tf.nn.leaky_relu(a)
 
     # 求解a中每个点的梯度
     grad_1 = tape.gradient(y_1, [a])

@@ -76,7 +76,7 @@ def tf_build():
     return None
 
 def tf_input():
-    print("########################2、tf_input #######################")
+    print("########################3、tf_input #######################")
     net = Dense(10)
     # 设置输入维度为20
     net.build(input_shape=(None,20))

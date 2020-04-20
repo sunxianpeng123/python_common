@@ -11,7 +11,7 @@ def tf_sigmoid():
     """ 0 - 1"""
     print("###################1、tf_sigmoid #########################")
     a = tf.linspace(-6., 6, 5)
-    sigmoid = tf.sigmoid(a)
+    sigmoid = tf.sigmoid(a)#对每个值产生 一个概率值，所有概率之和 不一定 为 1
 
     print('a = {}'.format(a))
     # 将 a 中的每个实数 压缩在 0-1 之间
@@ -25,19 +25,18 @@ def tf_sigmoid():
     print(tf.reduce_max(x))
     # tf.Tensor(-13.3578205, shape=(), dtype=float32)
     # tf.Tensor(17.585007, shape=(), dtype=float32)
-
+    # 使用 sigmoid 压缩在 0-1 之间
     x = tf.sigmoid(x)
     print(tf.reduce_min(x))
     print(tf.reduce_max(x))
     # tf.Tensor(0.0, shape=(), dtype=float32)
     # tf.Tensor(0.9999981, shape=(), dtype=float32)
-
     return None
 
 def tf_softmax():
     print("###################2、tf_softmax #########################")
     a = tf.linspace(-2., 2, 5)
-    softmax = tf.nn.softmax(a)
+    softmax = tf.nn.softmax(a)#对每个值产生一个概率值，所有概率之和 一定 为 1
 
     print('a = {}'.format(a))
     # 将 a 压缩在 0-1 之间，并且压缩后的tensor个元素之和为1
@@ -63,6 +62,7 @@ def tf_softmax_classification():
 
 def tf_tanh():
     print("###################4、tf_tanh #################")
+    # tanh 图像 类似于 sigmoid 下移 1
     a = tf.linspace(-2., 2, 5)
     tanh = tf.nn.tanh(a)
 

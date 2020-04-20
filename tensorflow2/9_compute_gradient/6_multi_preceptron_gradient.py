@@ -8,7 +8,7 @@
 import tensorflow as tf
 
 
-
+# multi_preceptron_gradient  多层感知机梯度
 
 if __name__ == '__main__':
     pass

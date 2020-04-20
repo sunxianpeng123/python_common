@@ -26,7 +26,7 @@ def tf_gradient_tape():
     print("对同一个变量求解多次梯度==============")
     with tf.GradientTape(persistent=True) as tape:
         tape.watch([w])
-        y3 = x * w
+        y3 = 2 * x * w
     grad_3 = tape.gradient(y3, [w])
     grad_4 = tape.gradient(y3, [w])
     print('grad_3 = {}'.format(grad_3))

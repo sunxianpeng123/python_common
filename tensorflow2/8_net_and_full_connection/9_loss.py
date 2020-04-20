@@ -39,15 +39,19 @@ def tf_mse_norm_loss():
     return None
 
 def tf_cross_entropy():
-    """交叉熵,越大越稳定，惊喜度越小，信息越小"""
+    """
+    用于度量两个概率分布间的差异性信息。
+    交叉熵,越大越稳定，惊喜度越小，信息越小
+    """
     print("###################2、tf_cross_entropy #####################")
     print('**************求解熵**************')
     a = tf.fill([4], 0.25)
+    print(a)
     entropy_1 = - tf.reduce_sum(a * tf.math.log(a) / tf.math.log(2.))
     print('entropy_1 = {}'.format(entropy_1))
     # entropy_1 = 2.0
     b = tf.constant([0.1, 0.1, 0.1, 0.7])
-    entropy_2 = - tf.reduce_sum(b * tf.math.log(b) / tf.math.log(2.))
+    entropy_2 = - tf.reduce_sum(b * tf.math.log(b) / tf.math.log(2.))# - ( b * logb/log2 )  <==> b * log2(1/b)
     print('entropy_2 = {}'.format(entropy_2))
     # entropy_2 = 1.35677969455719
     c = tf.constant([0.01, 0.01, 0.01, 0.97])
@@ -80,10 +84,10 @@ def tf_cross_entropy():
     multi_criteon = tf.losses.CategoricalCrossentropy()
     binary_criteon = tf.losses.BinaryCrossentropy()
 
-    cross_entropy_5 = multi_criteon(y,preds_3)#与cross_entropy_3相同
+    cross_entropy_5 = multi_criteon(y,preds_3)#与 cross_entropy_3相同
     """二分类交叉熵"""
     cross_entropy_6 = multi_criteon([0, 1], [0.9, 0.1])
-    cross_entropy_7 = binary_criteon([0, 1], [0.9, 0.1])
+    cross_entropy_7 = binary_criteon([0, 1], [0.9, 0.1])#参考 -(p1*ln(y1) + p2 * ln(y2))
     cross_entropy_8 = tf.losses.binary_crossentropy([0, 1], [0.9, 0.1])
 
     print('cross_entropy_5 = {}'.format(cross_entropy_5))

@@ -7,7 +7,7 @@
 
 import tensorflow as tf
 
-
+# chain 链
 def tf_chain_rule():
     """链式法则"""
     x = tf.constant(1.)
