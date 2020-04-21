@@ -16,10 +16,10 @@ def himmelblau(x):
 
 def plot_func_picture():
     """画出函数图像"""
-    x = np.arange(-6, 6, 0.1)
-    y = np.arange(-6, 6, 0.1)
+    x = np.arange(-6, 6, 0.1)#  (120,)
+    y = np.arange(-6, 6, 0.1)#  (120,)
     print('x,y range:', x.shape, y.shape)
-    X, Y = np.meshgrid(x, y)
+    X, Y = np.meshgrid(x, y)# X 矩阵中每个元素表示所有点横坐标，Y同理
     print('X,Y maps:', X.shape, Y.shape)
     Z = himmelblau([X, Y])
 
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     f(x,y)= (x**2 + y - 11) ** + (x + y**2 - 7)**2
     的最小值
     """
-    # plot_func_picture()
+    plot_func_picture()
     find_better_result()
 
 

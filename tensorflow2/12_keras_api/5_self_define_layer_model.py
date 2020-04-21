@@ -95,13 +95,15 @@ def predict(db_test, model):
     print('x.shape={},y.shape={},pred.shape={}'.format(x.shape, y.shape, pred.shape))
     # convert back to number
     y = tf.argmax(pred, axis=1)
-    print(pred)
-    print(y)
+    # print(pred)
+    # print(y)
     print("====================")
     test_x = sample[0]#一个批次的图片
     test_y = sample[1]#一个批次的图片onehot
-    test_x = tf.expand_dims(test_x[0,:], axis=0)
-    test_y = tf.expand_dims(test_y[0,:], axis=0)
+    print(test_x[0,:].shape)
+    print(test_y[0, :].shape)
+    test_x = tf.expand_dims(test_x[0,:], axis=0)#取出第一张图片(784,)，在添加一个维度 1
+    test_y = tf.expand_dims(test_y[0,:], axis=0)#取出第一张图片(10,)，在添加一个维度 1
     test_pred = model.predict(test_x)
     test_pred = tf.argmax(test_pred, axis=1)
     print('test_x.shape={},test_y.shape={},test_pred.shape={}'.format(test_x.shape, test_y.shape, test_pred.shape))
@@ -118,10 +120,8 @@ if __name__ == '__main__':
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data(mnist_path)
     print('x train shape = {},y train shape = {}'.format(x_train.shape, y_train.shape))
 
-    db_train = tf.data.Dataset.from_tensor_slices((x_train, y_train))\
-        .map(preprocess).shuffle(10000).batch(batch_size)
-    db_test = tf.data.Dataset.from_tensor_slices((x_test,y_test))\
-        .map(preprocess).batch(batch_size)
+    db_train = tf.data.Dataset.from_tensor_slices((x_train, y_train)).map(preprocess).shuffle(10000).batch(batch_size)
+    db_test = tf.data.Dataset.from_tensor_slices((x_test,y_test)).map(preprocess).batch(batch_size)
     # check_data(db_train)
 
     """模型相关"""
@@ -134,9 +134,10 @@ if __name__ == '__main__':
     # 指定训练集，迭代次数epochs，验证集，测试集集频率（即每迭代几次做一次模型验证,会打印相关信息，用于停止、保存等操作）
     model_2.fit(db_train, epochs=epochs, validation_data=db_test, validation_freq=1)
 
-    print("########################")
+    print("###########模型验证#############")
     # 模型验证
     model_2.evaluate(db_test)
+    print("###########预测#############")
     # 预测
     predict(db_test,model_2)
 

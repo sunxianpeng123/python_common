@@ -68,11 +68,28 @@ def train(db_train, db_test, model, epochs, optimizer):
             prob = tf.nn.softmax(logits, axis=1)
             # [b, 10] => [b], int64
             pred = tf.argmax(prob, axis=1)
+            # print("pred = {}".format(pred))
+            # tf.Tensor(
+            #     [9 8 8 7 3 4 6 8 7 0 4 8 7 7 5 4 3 4 2 8 1 5 1 0 2 3 3 5 7 0 6 8 0 3 9 9 5
+            #      8 7 7 1 0 1 7 8 9 0 1 2 7 4 5 6 7 8 0 1 2 3 4 7 8 9 7 8 6 4 1 9 3 8 4 4 7
+            #      0 1 9 2 8 7 8 2 6 0 6 5 3 5 5 9 1 4 0 6 1 0 0 6 2 1 1 7 7 8 4 6 0 7 0 3 6
+            #      8 7 1 5 2 4 9 4 3 6 4 1 7 3 6 6 0], shape=(128,), dtype=int64)
             pred = tf.cast(pred, dtype=tf.int32)
+            # print(pred)
+            # tf.Tensor(
+            # [9 8 8 7 3 4 6 8 7 0 4 8 7 7 5 4 3 4 2 8 1 5 1 0 2 3 3 5 7 0 6 8 0 3 9 9 5
+            #  8 7 7 1 0 1 7 8 9 0 1 2 7 4 5 6 7 8 0 1 2 3 4 7 8 9 7 8 6 4 1 9 3 8 4 4 7
+            #  0 1 9 2 8 7 8 2 6 0 6 5 3 5 5 9 1 4 0 6 1 0 0 6 2 1 1 7 7 8 4 6 0 7 0 3 6
+            #  8 7 1 5 2 4 9 4 3 6 4 1 7 3 6 6 0], shape=(128,), dtype=int32)
             # pred:[b]
             # y: [b]
             # correct: [b], True: equal, False: not equal
             correct = tf.equal(pred, y)
+            # print("correct = {}".format(correct))
+            # correct = [ True  True  True  True  True  True  True  True  True  True  True  True
+            #   True  True  True  True]
+            # print("tf.cast(correct, dtype=tf.int32) = {}".format(tf.cast(correct, dtype=tf.int32)))
+            # tf.cast(correct, dtype=tf.int32) = [1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1]
             correct = tf.reduce_sum(tf.cast(correct, dtype=tf.int32))
             total_correct += int(correct)
             total_num += x.shape[0]
@@ -88,17 +105,15 @@ if __name__ == '__main__':
     learning_rate = 1e-3
     epochs = 30
 
-    mnist_path =os.path.abspath(r'./data/mnist.npz')
+    mnist_path = os.path.abspath(r'./data/mnist.npz')
     print('mnist path = {}'.format(mnist_path))
 
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data(mnist_path)
 
     print('x train shape = {},y train shape = {}'.format(x_train.shape, y_train.shape))
 
-    db_train = tf.data.Dataset.from_tensor_slices((x_train, y_train))\
-        .map(preprocess).shuffle(10000).batch(batch_size)
-    db_test = tf.data.Dataset.from_tensor_slices((x_test,y_test))\
-        .map(preprocess).batch(batch_size)
+    db_train = tf.data.Dataset.from_tensor_slices((x_train, y_train)).map(preprocess).shuffle(10000).batch(batch_size)
+    db_test = tf.data.Dataset.from_tensor_slices((x_test,y_test)).map(preprocess).batch(batch_size)
     # check_data(db_train)
 
     """模型相关"""
