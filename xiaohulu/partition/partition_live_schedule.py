@@ -48,7 +48,7 @@ class Main():
         f = open(file_path, "w")
         import datetime
         # now = datetime.datetime.now()#获取当前系统时间
-        time_run = "2020-04-21 00:00:00"
+        time_run = "2020-01-03 00:00:00"
         now = datetime.datetime.strptime(time_run, "%Y-%m-%d %H:%M:%S")#指定某个时间
         print (now)
         i= 0
@@ -74,7 +74,7 @@ if __name__ == '__main__':
     gift_table_type = "gift"  # gift
     ####message
     all_platform_ids = [1,2,9,15,57,59,36,8,26,12,28,29,60]
-    for platform_id in [9]:
+    for platform_id in [28,29]:
         m.addPartitionsU(msg_table_name, platform_id, message_table_type)  # message
         m.addPartitionsU(gift_table_name, platform_id, gift_table_type)
 

@@ -47,3 +47,6 @@ tensorflow2/12_keras_api/saved_models/
 tensorflow2/12_keras_api/model/
 tensorflow2/12_keras_api/ckpt/
 xiaohulu/t1.png
+tensorflow2/12_keras_api/auto_save_model/
+tensorflow2/12_keras_api/HDF5/
+tensorflow2/12_keras_api/mannul_save_model/

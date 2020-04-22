@@ -69,10 +69,9 @@ if __name__ == '__main__':
     epochs = 1
     save_weights_dir = 'model/weights/'
     load_weights_dir = save_weights_dir
-    print(os.path.abspath(save_weights_dir))
-
-
     mnist_path =os.path.abspath(r'../data/mnist.npz')
+
+    print(os.path.abspath(save_weights_dir))
     print('mnist path = {}'.format(mnist_path))
 
     (x, y), (x_test, y_test) = datasets.mnist.load_data(mnist_path)
@@ -83,20 +82,17 @@ if __name__ == '__main__':
     idx = tf.random.shuffle(idx)
     x_train, y_train = tf.gather(x, idx[:50000]),tf.gather(y,idx[:50000])
     x_val, y_val = tf.gather(x, idx[-10000:]), tf.gather(y, idx[-10000:])
-    print(x_train.shape, y_train.shape, x_val.shape, y_val.shape)
 
-    db_train = tf.data.Dataset.from_tensor_slices((x_train, y_train))\
-        .map(preprocess).shuffle(10000).batch(batch_size)
-    db_val = tf.data.Dataset.from_tensor_slices((x_val, y_val))\
-        .map(preprocess).shuffle(10000).batch(batch_size)
-    db_test = tf.data.Dataset.from_tensor_slices((x_test,y_test))\
-        .map(preprocess).batch(batch_size)
+
+    db_train = tf.data.Dataset.from_tensor_slices((x_train, y_train)).map(preprocess).shuffle(10000).batch(batch_size)
+    db_val = tf.data.Dataset.from_tensor_slices((x_val, y_val)).map(preprocess).shuffle(10000).batch(batch_size)
+    db_test = tf.data.Dataset.from_tensor_slices((x_test,y_test)).map(preprocess).batch(batch_size)
     # check_data(db_train)
     sample = next(iter(db_train))
     print(sample[0].shape, sample[1].shape)
     """模型相关"""
-    model = get_model()
-
+    # 添加了正则化系数
+    model = get_model()#
     optimizer = optimizers.Adam(lr=learning_rate)
     # 指定训练集的优化函数，损失函数，测量尺
     model.compile(optimizer=optimizer, loss=tf.losses.CategoricalCrossentropy(from_logits=True), metrics=['accuracy'])

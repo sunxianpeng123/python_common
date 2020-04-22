@@ -27,9 +27,7 @@ def create_model():
         layers.Dense(10, activation='softmax')
     ])
 
-    model.compile(optimizer='adam', metrics=['accuracy'],
-                  loss='sparse_categorical_crossentropy')
-
+    model.compile(optimizer='adam', metrics=['accuracy'],loss='sparse_categorical_crossentropy')
     return model
 
 def evaluate(target_model,test_x,test_y):
@@ -40,22 +38,21 @@ def evaluate(target_model,test_x,test_y):
 ######################################################
 #自动保存 checkpoints
 ######################################################
-def checkpoint():
+def auto_save_model():
     """自动保存 checkpoints
     这样做，一是训练结束后得到了训练好的模型，使用得不必再重新训练，二是训练过程被中断，可以从断点处继续训练。
     设置tf.keras.callbacks.ModelCheckpoint回调可以实现这一点。
     """
     # 存储模型的文件名，语法与 str.format 一致
     # period=10：每 10 epochs 保存一次
-    checkpoint_path = "chechpoint/"+ str(time.time()).replace('.','') +"/training/cp-{epoch:04d}.ckpt"
+    checkpoint_path = "auto_save_model/"+ str(time.time()).replace('.','') +"/training/cp-{epoch:04d}.ckpt"
     checkpoint_dir = os.path.dirname(checkpoint_path)
-    cp_callback = callbacks.ModelCheckpoint(
-        checkpoint_path, verbose=1, save_weights_only=True, period=10)
+    # print(checkpoint_dir)
+    cp_callback = callbacks.ModelCheckpoint(checkpoint_path, verbose=1, save_weights_only=True, period=10)
 
     model = create_model()
     model.save_weights(checkpoint_path.format(epoch=0))
-    model.fit(x_train, y_train, epochs=50, callbacks=[cp_callback],
-              validation_data=(x_test, y_test), verbose=0)
+    model.fit(x_train, y_train, epochs=50, callbacks=[cp_callback],validation_data=(x_test, y_test), verbose=0)
     """加载权重"""
     print('=================加载权重=================')
     latest = tf.train.latest_checkpoint(checkpoint_dir)
@@ -68,21 +65,21 @@ def mannul_save_weights():
     """手动保存权重"""
     # 存储模型的文件名，语法与 str.format 一致
     # period=10：每 10 epochs 保存一次
-    checkpoint_path = "chechpoint/"+ str(time.time()).replace('.','') +"/training/cp-{epoch:04d}.ckpt"
+    checkpoint_path = "mannul_save_model/"+ str(time.time()).replace('.','') +"/training/cp-{epoch:04d}.ckpt"
     checkpoint_dir = os.path.dirname(checkpoint_path)
-    cp_callback = callbacks.ModelCheckpoint(
-        checkpoint_path, verbose=1, save_weights_only=True, period=10)
+    print(checkpoint_path)
+    print(checkpoint_dir)
+    cp_callback = callbacks.ModelCheckpoint(checkpoint_path, verbose=1, save_weights_only=True, period=10)
 
     model = create_model()
     model.save_weights(checkpoint_path.format(epoch=0))
-    model.fit(x_train, y_train, epochs=50, callbacks=[cp_callback],
-              validation_data=(x_test, y_test), verbose=0)
+    model.fit(x_train, y_train, epochs=50, callbacks=[cp_callback],validation_data=(x_test, y_test), verbose=0)
     """保存权重"""
-    model.save_weights('./checkpoints/mannul_checkpoint')
+    model.save_weights('mannul_save_model/checkpoints/mannul_checkpoint')
     """加载权重"""
     print('=================加载权重=================')
     model = create_model()
-    model.load_weights('./checkpoints/mannul_checkpoint')
+    model.load_weights('mannul_save_model/checkpoints/mannul_checkpoint')
     evaluate(model, x_test, y_test)
 
 
@@ -96,19 +93,24 @@ def save_model_HDF5():
     """
     # 存储模型的文件名，语法与 str.format 一致
     # period=10：每 10 epochs 保存一次
-    checkpoint_path = "chechpoint/"+ str(time.time()).replace('.','') +"/training/cp-{epoch:04d}.ckpt"
+    checkpoint_path = "HDF5/chechpoint/"+ str(time.time()).replace('.','') +"/training/cp-{epoch:04d}.ckpt"
     checkpoint_dir = os.path.dirname(checkpoint_path)
-    cp_callback = callbacks.ModelCheckpoint(
-        checkpoint_path, verbose=1, save_weights_only=True, period=10)
+    print(checkpoint_path)
+    print(checkpoint_dir)
+    cp_callback = callbacks.ModelCheckpoint(checkpoint_path, verbose=1, save_weights_only=True, period=10)
 
     model = create_model()
     model.save_weights(checkpoint_path.format(epoch=0))
-    model.fit(x_train, y_train, epochs=50, callbacks=[cp_callback],
-              validation_data=(x_test, y_test), verbose=0)
+    model.fit(x_train, y_train, epochs=50, callbacks=[cp_callback],validation_data=(x_test, y_test), verbose=0)
+
     """保存整个模型"""
     # 直接调用model.save即可保存为 HDF5 格式的文件。
-    model_path = 'model/' + str(time.time()).replace('.', '') + '.h5'
+    model_pre_dir = "HDF5/model/"
+    if os.path.exists(model_pre_dir) == False:
+        os.makedirs(model_pre_dir)
+    model_path = model_pre_dir + str(time.time()).replace('.', '') + '.h5'
     model.save(model_path)
+
     """加载权重"""
     print('=================加载权重=================')
     model = models.load_model(model_path)
@@ -116,31 +118,29 @@ def save_model_HDF5():
 
 
 def save_model_saved_model():
-    """保存为saved model"""
+    """保存为 saved model"""
     # 存储模型的文件名，语法与 str.format 一致
     # period=10：每 10 epochs 保存一次
     checkpoint_path = "chechpoint/"+ str(time.time()).replace('.','') +"/training/cp-{epoch:04d}.ckpt"
     checkpoint_dir = os.path.dirname(checkpoint_path)
-    cp_callback = callbacks.ModelCheckpoint(
-        checkpoint_path, verbose=1, save_weights_only=True, period=10)
+    print(checkpoint_path)
+    print(checkpoint_dir)
+    cp_callback = callbacks.ModelCheckpoint(checkpoint_path, verbose=1, save_weights_only=True, period=10)
 
     model = create_model()
     model.save_weights(checkpoint_path.format(epoch=0))
-    model.fit(x_train, y_train, epochs=50, callbacks=[cp_callback],
-              validation_data=(x_test, y_test), verbose=0)
+    model.fit(x_train, y_train, epochs=50, callbacks=[cp_callback],validation_data=(x_test, y_test), verbose=0)
     """保存为saved_model格式。"""
-    saved_model_path = "./saved_models/{}".format(int(time.time()))
+    saved_model_path = "saved_models/{}".format(int(time.time()))
     tf.keras.experimental.export_saved_model(model, saved_model_path)
     print('=================恢复模型并预测=================')
     new_model = tf.keras.experimental.load_from_saved_model(saved_model_path)
-    print(model.predict(x_test).shape)
+    print("model.predict(x_test).shape = {}".format(model.predict(x_test).shape))
     """
     saved_model格式的模型可以直接用来预测(predict)，但是 saved_model 没有保存优化器配置，
     如果要使用evaluate方法，则需要先 compile。
     """
-    new_model.compile(optimizer=model.optimizer,
-                      loss='sparse_categorical_crossentropy',
-                      metrics=['accuracy'])
+    new_model.compile(optimizer=model.optimizer,loss='sparse_categorical_crossentropy',metrics=['accuracy'])
     evaluate(model, x_test, y_test)
 
 
@@ -164,11 +164,15 @@ if __name__ == '__main__':
     y_train, y_test = y_train[:1000], y_test[:1000]
     x_train = x_train[:1000].reshape(-1, 28 * 28) / 255.0
     x_test = x_test[:1000].reshape(-1, 28 * 28) / 255.0
+    """自动保存权重 auto save model"""
     # 自动保存权重
-    # checkpoint()
+    # auto_save_model()
+    """手动保存权重 mannul save model"""
     # 手动保存权重
     # mannul_save_weights()
+    """保存整个模型 HDF5"""
     # 保存整个模型HDF5
     # save_model_HDF5()
+    """保存整个模型 saved_model"""
     # saved_model
     save_model_saved_model()

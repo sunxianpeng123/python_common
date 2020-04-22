@@ -67,8 +67,7 @@ def train(db_train, db_test, model, epochs, optimizer):
 
             if step % 100 == 0:
                 """获取数据并清除buffer"""
-                print('epoch = {},step = {},cross loss = {},mse loss = {}'
-                      .format(epoch,step,loss_meter.result().numpy(),float(loss_mse)))
+                print('epoch = {},step = {},cross loss = {},mse loss = {}'.format(epoch,step,loss_meter.result().numpy(),float(loss_mse)))
                 loss_meter.reset_states()
 
         # 准确率测量尺和下面自定义的 total_correct，total_num功能相同
@@ -109,13 +108,10 @@ if __name__ == '__main__':
     print('mnist path = {}'.format(mnist_path))
 
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data(mnist_path)
-
     print('x train shape = {},y train shape = {}'.format(x_train.shape, y_train.shape))
 
-    db_train = tf.data.Dataset.from_tensor_slices((x_train, y_train))\
-        .map(preprocess).shuffle(10000).batch(batch_size)
-    db_test = tf.data.Dataset.from_tensor_slices((x_test,y_test))\
-        .map(preprocess).batch(batch_size)
+    db_train = tf.data.Dataset.from_tensor_slices((x_train, y_train)).map(preprocess).shuffle(10000).batch(batch_size)
+    db_test = tf.data.Dataset.from_tensor_slices((x_test,y_test)).map(preprocess).batch(batch_size)
     # check_data(db_train)
 
     """模型相关"""
