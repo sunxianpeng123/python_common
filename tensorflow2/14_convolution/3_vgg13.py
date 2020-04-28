@@ -23,7 +23,6 @@ def get_vgg13_model():
     """卷积层"""
     conv_net = [  # 5 units of conv + max pooling
         # unit 1
-
         layers.Conv2D(64, kernel_size=[3, 3], padding="same", activation=tf.nn.relu),
         layers.Conv2D(64, kernel_size=[3, 3], padding="same", activation=tf.nn.relu),
         layers.MaxPool2D(pool_size=[2, 2], strides=2, padding='same'),
@@ -50,7 +49,7 @@ def get_vgg13_model():
         layers.Dense(128, activation=tf.nn.relu),
         layers.Dense(100, activation=None),
     ])
-    """"""
+    """  """
     conv_net = Sequential(conv_net)
     conv_net.build(input_shape=[None, 32, 32, 3])
     fc_net.build(input_shape=[None, 512])
@@ -128,7 +127,8 @@ if __name__ == '__main__':
     #######################################################
     # [50k, 32, 32, 3], [10k, 1]
     # (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data(mnist_path)
-    (x_train, y_train), (x_test, y_test) = datasets.cifar100.load_data()
+    (x_train, y_train), (x_test, y_test) = datasets.cifar10.load_data()
+
     y_train = tf.squeeze(y_train)
     y_test = tf.squeeze(y_test)
     y_train = tf.one_hot(y_train, depth=onehot_depth)  # [50k, 10]
