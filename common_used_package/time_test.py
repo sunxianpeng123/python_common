@@ -63,6 +63,7 @@ def other_time_op():
     print('1 t2 = {}'.format(t2))
     # 1 t1 = Sun Dec  1 16:44:57 2019
     # 1 t2 = Sun Dec  1 16:44:57 2019
+    print(time.strptime(t1))
     print('************time加减**************')
     # timestamp加减单位以秒为单位
     t3 = time.time()
@@ -72,7 +73,11 @@ def other_time_op():
     #2 t3 = 1575189897.4310002
     # 2 t4 = 1575189907.4310002
 
+def add():
+    "字符串格式转struct_time格式时间"
+    print(time.strptime('Sat Feb 04 14:06:42 2017'))
 if __name__ == '__main__':
     between_struct_time_and_timestamp()
     between_format_time_and_struct_time()
     other_time_op()
+    add()
