@@ -24,6 +24,8 @@ def add_partition(table_name,platform_id):
         three=") LOCATION 'hdfs://master20:8020/user/spark/parquet/live_show/fans_list_info/date="
     if table_name == "live_goods_info":
         three=") LOCATION 'hdfs://master20:8020/user/spark/parquet/live_show/goods_info/date="
+    if table_name == "live_purchase_info":
+        three = ") LOCATION 'hdfs://master20:8020/user/spark/parquet/live_show/purchase_info/date="
 
     four = "/plat="+str(platform_id) +"';"
 
@@ -57,8 +59,9 @@ if __name__ == '__main__':
     fans_info_table_name = 'live_fans_info'
     fans_list_table_name = 'live_fans_list_info'
     goods_info_table_name = 'live_goods_info'
+    purchase_info_table_name = 'live_purchase_info'
 
-    tables = [anchor_basic_table_name,fans_info_table_name,fans_list_table_name,goods_info_table_name]
+    tables = [anchor_basic_table_name,fans_info_table_name,fans_list_table_name,goods_info_table_name,purchase_info_table_name]
     plats = [71]
     print(plats)
     # ALTER TABLE parquet.label_parquet ADD IF NOT EXISTS PARTITION(plat=201,date=20190527,group=999) LOCATION 'hdfs://master20:8020/tmp/repartition/comment/plat=201/date=20190527/group=999';
