@@ -12,23 +12,27 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 from App.extentions import  init_extentions
+from App.settings import envs
 
 from App.views.first_blue import first_b
 from App.views.ordinary_views import init_route
 from App.views.second_blue import second_b
 
 
-def create_app():
+def create_app(env):
     app = Flask(__name__)
     ###############################
     # 操作数据库 models orm配置
     ###############################
     # db_uri格式:数据库:驱动//用户名:密码@主机:端口/数据库名字
-    # db_uri = "mysql+pymysql://username:password@server:port/db"
+    # db_uri = "mysql+pymysql://username:password@ip:port/db"
     # app.config['SQLALCHEMY_DATABASE_URI'] = mysql_uri
-    db_uri = "sqlite:///sqlite.db"
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    # db_uri = "sqlite:///sqlite.db"
+    # app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+    # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    print(envs.get('develop'))
+    app.config.from_object(envs.get(env))
+
     init_extentions(app)
     ###############################
     # 路由配置
