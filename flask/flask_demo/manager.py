@@ -21,6 +21,9 @@ if __name__ == '__main__':
     # pip install flask_script,
     #           flask_script的作用是可以通过命令行的形式来操作flask例如通过一个命令跑一个开发版本的服务器，设置数据库，定时任务等.安装flask_script比较简单
     # pip install flask-migrate
+    #           在开发程序的过程中，你会发现有时需要修改数据库模型，而且修改之后还需要更新数据库。
+    #           仅当数据库表不存在时，Flask-SQLAlchemy 才会根据模型进行创建。因此，更新表的唯一方式就是先删除旧表，
+    #           不过这样做会丢失数据库中的所有数据。更加好的表示方法就是利用数据库迁移框架
     #           python manager.py
     #           python manager.py db init
     #           python manager.py db migrate
