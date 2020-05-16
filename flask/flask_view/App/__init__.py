@@ -13,7 +13,12 @@ from flask_sqlalchemy import SQLAlchemy
 
 from App.extentions import  init_extentions
 from App.settings import envs
-from App.views import init_view
+from App.views.base import base_blue
+from App.views.cookies import cookies_blue
+from App.views.redirection import redirection_blue
+from App.views.request import request_blue
+from App.views.request_method import req_method_blue
+from App.views.response import response_blue
 
 
 def create_app(env):
@@ -27,3 +32,10 @@ def create_app(env):
     # app.add_url_rule('/', endpoint='index')
     return app
 
+def init_view(app):
+    app.register_blueprint(base_blue)
+    app.register_blueprint(req_method_blue)
+    app.register_blueprint(redirection_blue)
+    app.register_blueprint(request_blue)
+    app.register_blueprint(response_blue)
+    app.register_blueprint(cookies_blue)

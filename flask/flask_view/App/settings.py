@@ -25,6 +25,8 @@ class Config:
     DEBUG = False
     TESTING = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    # session使用的secret_key
+    SECRET_KEY = 'sxp'
 
 #   开发环境配置
 class DevelogConfig(Config):
