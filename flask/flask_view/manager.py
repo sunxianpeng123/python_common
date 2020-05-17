@@ -28,5 +28,7 @@ if __name__ == '__main__':
     #           python manager.py db upgrade
     # odoo
     # 比Django还重的web框架，可以快速生成网站
+    #  pip install flask-session
+    #           允许设置session到指定存储的空间中,
     manager.run()
 

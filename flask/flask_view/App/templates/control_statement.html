@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>students</title>
+</head>
+<body>
+
+    <h3>======一、这里是使用 for循环========</h3>
+    <ul>
+        {% for student in students %}
+            {% if loop.first %}
+                <li style="color: red"> {{ loop.index }}:{{ loop.index0 }}:{{ student }}</li>
+            {% elif loop.last %}
+                <li style="color: blue"> {{ loop.index }}:{{ loop.index0 }}:{{ student }}</li>
+            {% else %}
+                <li style="color: black"> {{ loop.index }}:{{ loop.index0 }}:{{ student }}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <h3>=======二、这里是使用 if =======</h3>
+    {% if a %}
+        <li>这是a</li>
+    {% endif %}
+
+    {% if a==b %}
+        <li>这是判断a是否等于b</li>
+    {% endif %}
+
+    <h3>=======三、这里是使用过滤器 =======</h3>
+    <li>{{ msg|capitalize }}</li>
+    <li>{{ msg|title }}</li>
+    <li>{{ msg|reverse }}</li>
+    <li>{{ msg|capitalize }}</li>
+
+</body>
+</html>

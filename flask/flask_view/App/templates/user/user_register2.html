@@ -1,0 +1,8 @@
+<!--继承自user_register-->
+{% extends 'user/user_register.html' %}
+{% block header %}
+    <!--加上 {{ super() }} 表示在父 html上追加，
+    不加{{ super() }} 表示覆盖父html的内容-->
+    {{ super() }}
+    <li>二次填坑</li>
+{% endblock %}

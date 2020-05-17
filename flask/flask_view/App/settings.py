@@ -27,6 +27,13 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # session使用的secret_key
     SECRET_KEY = 'sxp'
+    """ 指定 session 的redis配置，之后存储 session 就在redis中"""
+    # SESSION_TYPE = 'redis'
+    # SESSION_COOKIE_SECURE = True
+    # SESSION_USE_SIGNER = True
+    # SESSION_KEY_PREFIX = 'session:'
+    # SESSION_REDIS = '127.0.0.1:6379'
+    # SESSION_MEMCACHED = '127.0.0.1:11211'
 
 #   开发环境配置
 class DevelogConfig(Config):

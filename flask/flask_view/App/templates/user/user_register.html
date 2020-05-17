@@ -1,0 +1,26 @@
+<!--继承自base_user-->
+<h3>======一、这里是使用 include========</h3>
+{% extends 'user/base_user.html' %}
+{% block header %}
+    {% include 'banner.html' %}
+{% endblock %}
+
+{% block content %}
+    <li>这是用户注册的内容</li>
+<h3>======二、这里是使用 macro========</h3>
+    {% macro hello() %}
+        <li>这是一个宏定义 macro</li>
+    {% endmacro%}
+    <!--调用hello 函数，在模板中定义函数-->
+    {{ hello() }}
+    {{ hello() }}
+<h3>======三、这里是导入 macro========</h3>
+    <!--调用hello 函数，在模板中定义函数-->
+    {% from 'html_func.html' import haha %}
+    {{ haha("tom") }}
+    <br>
+    {{ haha("tony") }}
+    {% from 'html_func.html' import goods %}
+    {{ goods() }}
+
+{% endblock %}

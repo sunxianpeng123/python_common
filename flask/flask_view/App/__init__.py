@@ -9,17 +9,16 @@
 from flask import Flask
 
 # blueprint方式管理
-from flask_sqlalchemy import SQLAlchemy
 
 from App.extentions import  init_extentions
 from App.settings import envs
-from App.views.base import base_blue
-from App.views.cookies import cookies_blue
-from App.views.redirection import redirection_blue
-from App.views.request import request_blue
-from App.views.request_method import req_method_blue
-from App.views.response import response_blue
-
+from App.views.template_view.demo import template_view_blue
+from App.views.view_view.base import base_blue
+from App.views.view_view.cookies import cookies_blue
+from App.views.view_view.redirection import redirection_blue
+from App.views.view_view.request import request_blue
+from App.views.view_view.request_method import req_method_blue
+from App.views.view_view.response import response_blue
 
 def create_app(env):
     app = Flask(__name__)
@@ -39,3 +38,5 @@ def init_view(app):
     app.register_blueprint(request_blue)
     app.register_blueprint(response_blue)
     app.register_blueprint(cookies_blue)
+#     template
+    app.register_blueprint(template_view_blue)
