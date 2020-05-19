@@ -18,6 +18,8 @@ cookies_blue = Blueprint('cookies_blue', __name__)
 
 
 #######################################################
+# 看完这篇 Session、Cookie、Token，和面试官扯皮就没问题了
+# https://blog.csdn.net/qq_36894974/article/details/105322171?utm_medium=distribute.pc_feed.none-task-blog-alirecmd-19.nonecase&depth_1-utm_source=distribute.pc_feed.none-task-blog-alirecmd-19.nonecase&request_id=
 # 会话技术
 #     跨请求共享数据
 #     出现原因
