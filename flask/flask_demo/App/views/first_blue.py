@@ -21,6 +21,7 @@ def index():
     # 传递 msg 到html，变量名字就是 msg
     return render_template('index.html', msg="这天气适合睡觉！")
 
+# http://127.0.0.1:5000/createdb/
 @first_b.route('/createdb/')
 def createdb():
     db.create_all()
@@ -31,7 +32,7 @@ def dropdb():
     db.drop_all()
     return '删除成功'
 
-
+# http://127.0.0.1:5000/adduser
 @first_b.route('/adduser/')
 def add_user():
     user = User()

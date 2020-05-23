@@ -10,6 +10,7 @@
 from flask import Blueprint
 
 second_b = Blueprint(name='second_blue', import_name=__name__)
+# http://127.0.0.1:5000/sb1
 @second_b.route('/sb1')
 def index():
     return '我是second_blue蓝图的主页'
