@@ -12,6 +12,7 @@ from flask import Flask
 
 from App.extentions import  init_extentions
 from App.settings import envs
+from App.views.template_view.bootstrap_view import bootstap_view_blue
 from App.views.template_view.demo import template_view_blue
 from App.views.view_view.base import base_blue
 from App.views.view_view.cookies import cookies_blue
@@ -40,3 +41,4 @@ def init_view(app):
     app.register_blueprint(cookies_blue)
 #     template
     app.register_blueprint(template_view_blue)
+    app.register_blueprint(bootstap_view_blue)
