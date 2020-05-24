@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dogs</title>
+</head>
+<body>
+<ul>
+    {% for dog in dogsItem %}
+    <li>id = {{ dog.id }},name = {{ dog.name }}</li>
+{% endfor %}
+</ul>
+
+<hr>
+<ul>
+    {% for dog in pagination.items %}
+    <li>id = {{ dog.id }},name = {{ dog.name }}</li>
+{% endfor %}
+</ul>
+{#下面可以添加页码标志,点击页码可以实现页面跳转#}
+<div class=pagination>
+    {%- for page in pagination.iter_pages() %}
+        {% if page %}
+            {% if page != pagination.page %}
+                <a href="{{ url_for('condition_select_blue.get_dogs_with_paginate') }}?page={{ page }}&per_page={{ per_page }}">{{ page }}</a>
+            {% else %}
+                <strong>{{ page }}</strong>
+            {% endif %}
+        {% else %}
+            <span class=ellipsis>…</span>
+        {% endif %}
+    {%- endfor %}
+</div>
+
+
+</body>
+</html>

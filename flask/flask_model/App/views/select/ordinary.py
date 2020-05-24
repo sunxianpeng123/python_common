@@ -16,6 +16,17 @@ ordinary_select_blue = Blueprint('ordinary_select_blue', __name__, template_fold
 
 ###################################################################
 # 简单查询
+# 数据获取
+#       获取对象
+#           first
+#           get
+#           get_or_404
+#       获取结果集
+#           all：是一个特例，返回列表
+#           filter：返回BaseQuery对象
+#        用法
+#            filter(类名.属性.运算符（‘xxx’）)
+#            filter(类名.属性名.数学运算符 值)
 ###################################################################
 # http://127.0.0.1:5000/select/getstudent/
 @ordinary_select_blue.route('/getstudent/')

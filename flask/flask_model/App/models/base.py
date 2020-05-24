@@ -38,6 +38,12 @@ class User(db.Model):
 #       可以学习 flask-sqlalchemy、 sqlalchemy 的模型文档
 # 模型之间的关系
 #       可以用继承来体现
+# 项目中的数据库优化
+#       怎么连接
+#       连接多少个
+#       Django 和 Flask 默认都是有数据库连接池的
+
+
 ##########################################################
 class Animal(db.Model):
     __abstract__ = True
