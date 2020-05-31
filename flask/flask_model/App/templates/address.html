@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Addresses</title>
+</head>
+<body>
+        {% for address in addresses %}
+            <li>id = {{ address.id }}, name = {{ address.name }}, customer_id = {{ address.customer_id }}</li>
+        {% endfor %}
+</body>
+</html>

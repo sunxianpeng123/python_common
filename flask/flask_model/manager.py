@@ -21,7 +21,7 @@ if __name__ == '__main__':
     # 3、pip install flask_script,
     #           flask_script的作用是可以通过命令行的形式来操作flask例如通过一个命令跑一个开发版本的服务器，设置数据库，定时任务等.安装flask_script比较简单
     # 4、pip install flask-migrate
-    #           Flask-Migrate 插件提供了和 Django 自带的 migrate 类似的功能。
+    #           Flask-Migrate 插件提供了和 Django 自带的 migrate 类似的功能。每次更新model时，执行如下语句
     #           python manager.py
     #           python manager.py db init
     #           python manager.py db migrate
@@ -43,6 +43,13 @@ if __name__ == '__main__':
     #                   宏的功能更加丰富，比如分页导航支持传入URL片段
     #                   统一的宏命名，即“render_*”，更符合直觉
     # pip install flask-debugtoolbar
+    # pip install flask-cache
+    #           pip install flask-caching
+    #           还有一个 flask-caching类似的库
+    #           使用flask-cache和flask1.x版本，启动时会报错，可以改用flask-caching
+    # pip freeze
+    #           查询已经安装的python包
+
 
     manager.run()
 

@@ -58,3 +58,24 @@ class Dog(Animal):
 
 class Cat(Animal):
     eat = db.Column(db.String(32), default="小鱼干")
+##########################################################
+# 级联数据， 一对多的关系模型的构建
+##########################################################
+class Customer(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(16))
+
+    addresses = db.relationship('Address', backref='customer', lazy=True)
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+class Address(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    position = db.Column(db.String(128))
+    # 外键
+    customer_id = db.Column(db.Integer, db.ForeignKey(Customer.id),nullable=False)
+    def save(self):
+        db.session.add(self)
+        db.session.commit()

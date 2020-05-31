@@ -8,9 +8,10 @@
 import random
 
 from flask import Blueprint
+from sqlalchemy import text
 
 from App.extentions import db
-from App.models.base import Student, Cat, Dog
+from App.models.base import Student, Cat, Dog, Customer, Address
 
 ordinary_insert_blue = Blueprint('ordinary_insert_blue', __name__,template_folder='templates', url_prefix='/insert')
 
@@ -81,3 +82,22 @@ def add_dog():
     dog.legs = 4
     dog.save()
     return "Add Dog Seccess"
+
+
+# http://127.0.0.1:5000/insert/addcustomer
+@ordinary_insert_blue.route("/addcustomer/")
+def add_customer():
+    customer = Customer()
+    customer.name = "剁手党%d" % random.randrange(1000)
+    customer.save()
+    return "Add Customer Seccess %s" % customer.name
+
+# http://127.0.0.1:5000/insert/addaddress
+@ordinary_insert_blue.route("/addaddress/")
+def add_address():
+    address = Address()
+    address.position = "上海市徐汇区%d" % random.randrange(10000)
+    # 根据id排序，取出最后一个，即拿出最新的一个来
+    address.customer_id = Customer.query.order_by(text("-id")).first().id
+    address.save()
+    return "Add Address Seccess %s" % address.position

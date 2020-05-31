@@ -7,6 +7,8 @@
 
 # 放置第三方扩展库
 from flask_bootstrap import Bootstrap
+from flask_caching import Cache
+
 from flask_debugtoolbar import DebugToolbarExtension
 from flask_migrate import Migrate
 from flask_session import Session
@@ -15,6 +17,10 @@ from flask_sqlalchemy import SQLAlchemy
 migrate = Migrate()
 # 数据库模型信息初始化
 db = SQLAlchemy()
+cache = Cache(config={
+    "CACHE_TYPE":"simple"#内存中
+    # "CACHE_TYPE":"redis"#redis中
+})
 
 def init_extentions(app):
     db.init_app(app=app)
@@ -22,3 +28,4 @@ def init_extentions(app):
     Session(app)
     Bootstrap(app)
     DebugToolbarExtension(app)
+    cache.init_app(app)

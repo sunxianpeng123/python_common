@@ -12,6 +12,7 @@ from flask import Flask
 
 from App.extentions import  init_extentions
 from App.settings import envs
+from App.views.cache.ordinary import cache_select_blue
 from App.views.insert.ordinary import ordinary_insert_blue
 from App.views.delete.ordinary import ordinary_delete_blue
 from App.views.select.condition import condition_select_blue
@@ -40,4 +41,6 @@ def init_view(app):
     # 查
     app.register_blueprint(ordinary_select_blue)
     app.register_blueprint(condition_select_blue)
+    #缓存
+    app.register_blueprint(cache_select_blue)
 
