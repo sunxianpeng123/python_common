@@ -10,13 +10,13 @@ import tensorflow as tf
 def tf_reshape():
     """变换tensor的维度信息"""
     print("################1、tf_reshape#################")
-    t = tf.random.normal([4,28,28,3])#4张28*28*3的照片
+    t = tf.random.normal([4, 28, 28, 3])#4张28*28*3的照片
     #相当于将照片的各个通道分别打平成一个向量，但是保留通道信息
-    t_1 = tf.reshape(t,[4,784,3])
-    t_2 = tf.reshape(t,[4,-1,3])#同 t_1，只能有一个-1，-1表示让系统自动计算此处的数值
+    t_1 = tf.reshape(t, [4, 784, 3])
+    t_2 = tf.reshape(t, [4, -1, 3])#同 t_1，只能有一个-1，-1表示让系统自动计算此处的数值
     # 相当于将图片的各个通道打平成一个向量，不保留通道信息
-    t_3 = tf.reshape(t,[4,784*3])
-    t_4 = tf.reshape(t,[4,-1])
+    t_3 = tf.reshape(t, [4, 784 * 3])
+    t_4 = tf.reshape(t, [4, -1])
 
     print('t shape = {}, ndim = {}'.format(t.shape,t.ndim))
     print('t_1 shape = {}, ndim = {}'.format(t_1.shape,t_1.ndim))
@@ -31,7 +31,7 @@ def tf_reshape():
     return None
 
 def tf_back_reshape():
-    """将reshape后的tensor回复，但是需要知道reshape前的tensor物理意义"""
+    """将reshape后的tensor恢复，但是需要知道reshape前的tensor物理意义"""
     print("################2、tf_back_reshape#################")
     t = tf.random.normal([4,28,28,3])#4张28*28*3的照片
     #相当于将照片的各个通道分别打平成一个向量，但是保留通道信息

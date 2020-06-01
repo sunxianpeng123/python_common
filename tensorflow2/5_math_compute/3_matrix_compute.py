@@ -16,7 +16,7 @@ def tf_matrix_2_dims():
 
     # 下面两种方式都是进行矩阵的相乘
     t_1 = a @ b
-    t_2 = tf.matmul(a,b)
+    t_2 = tf.matmul(a, b)
 
     print('t_1 shape = {}'.format(t_1.shape))
     print('t_2 shape = {}'.format(t_2.shape))
@@ -25,8 +25,8 @@ def tf_matrix_2_dims():
 def tf_martix_multi_dims():
     """ 多维矩阵的计算"""
     print("#############2、tf_martix_multi_dims ################")
-    a = tf.ones([4,2,3])
-    b = tf.fill([4,3,5],2.)
+    a = tf.ones([4, 2, 3])
+    b = tf.fill([4, 3, 5], 2.)
 
     # 下面两种方式都是进行矩阵的相乘,并且表示相同的意思
     # 在这个例子中，将第一维度4代表batch，后面两个维度作为矩阵相乘，
@@ -43,8 +43,8 @@ def tf_martix_multi_dims():
 def tf_matrix_with_broadcasting():
     """ 广播 """
     print("#############3、tf_matrix_with_broadcasting ################")
-    a = tf.ones([4,2,3])
-    b = tf.fill([3,5],2.)
+    a = tf.ones([4, 2, 3])
+    b = tf.fill([3, 5],2.)
     bb = tf.broadcast_to(b,[4,3,5])
 
     t_1 = tf.matmul(a,bb)#计算结果和tf_martix_multi_dims中相同

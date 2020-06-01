@@ -33,11 +33,11 @@ def tf_expand_dims():
 def tf_squeeze_dims():
     """减少维度，不能减少维度不为 1 的维度"""
     print("###############2、tf_squeeze_dims减少维度################")
-    t = tf.zeros([1,2,1,3])
+    t = tf.zeros([1, 2, 1, 3])
     t_1 = tf.squeeze(t)#将t中维度为1去的全部去掉
-    t_2 = tf.squeeze(t,axis=0)#去掉t中下标0处的维度
-    t_3 = tf.squeeze(t,axis=-2)#去掉t中下标2（倒数第2个）处的维度
-    t_4 = tf.squeeze(t,axis=-4)#去掉t中下标0（倒数第4个）处的维度
+    t_2 = tf.squeeze(t, axis=0)#去掉t中下标0处的维度
+    t_3 = tf.squeeze(t, axis=-2)#去掉t中下标2（倒数第2个）处的维度
+    t_4 = tf.squeeze(t, axis=-4)#去掉t中下标0（倒数第4个）处的维度
 
     print('t shape = {}'.format(t.shape))
     print('t_1 shape = {}'.format(t_1.shape))

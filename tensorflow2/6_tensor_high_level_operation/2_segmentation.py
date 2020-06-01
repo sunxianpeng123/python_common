@@ -20,12 +20,11 @@ def tf_unstack():
     t = tf.stack([a,b],axis=0) #t shape = (2, 4, 35, 8)
     # 在axis=0即第一个维度分开，分开后的数量是第一维度的shape大小，返回一个list
     # 分开后的tensor维度均相同
-    t_1 = tf.unstack(t,axis=0)
+    t_1 = tf.unstack(t, axis=0)
     t_1_1 = t_1[0]
     t_1_2 = t_1[1]
     # 在axis=3即第4个维度分开，分开后的数量是第4维度的shape大小，返回一个list
     t_2 = tf.unstack(t,axis=3)
-
 
     print('t shape = {}'.format(t.shape))
     print('t_1 type = {},count = {}'.format(type(t_1),len(t_1)))
@@ -33,10 +32,10 @@ def tf_unstack():
     print('t_1_2 shape = {}'.format(t_1_2.shape))
     print('t_2 type = {},count = {}'.format(type(t_2),len(t_2)))
     # t shape = (2, 4, 35, 8)
-    # t_1 type = <class 'list'>,count = 2
+    # t_1 type = <class 'list'>, count = 2
     # t_1_1 shape = (4, 35, 8)
     # t_1_2 shape = (4, 35, 8)
-    # t_2 type = <class 'list'>,count = 8
+    # t_2 type = <class 'list'>, count = 8
     return None
 
 

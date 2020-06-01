@@ -17,7 +17,7 @@ def tf_constant():
     t_2 = tf.constant([1])
     t_3 = tf.constant([1,2.])
     t_4 = tf.constant([[1,2.],[3.,4.]])
-    print(t_4)
+
 
     print(t_1)
     print(t_1.dtype)
@@ -30,6 +30,8 @@ def tf_constant():
     print(t_3)
     print(t_3.dtype)
     print('t_3 shape = {}'.format(t_3.shape))
+
+    print("t_4 = {}".format(t_4))
     # <dtype: 'int32'>
     # t_1 shape = ()
     # <dtype: 'int32'>

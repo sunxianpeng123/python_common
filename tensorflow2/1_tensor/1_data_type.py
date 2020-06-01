@@ -35,7 +35,7 @@ def constant():
     print(constant_2)
     print('constant_2 = {}'.format(constant_2))
 
-    # constant_3 = tf.constant(2.2,dtype=tf.int32)#TypeError: Cannot convert 2.2 to EagerTensor of dtype int32
+    # constant_3 = tf.constant(2.2,dtype=tf.int32) #TypeError: Cannot convert 2.2 to EagerTensor of dtype int32
 
     constant_4 = tf.constant(2.,dtype=tf.double)
     print(constant_4)

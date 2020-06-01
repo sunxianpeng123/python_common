@@ -12,7 +12,7 @@ def tf_math_log_exp():
        tf.exp 和 tf.math.exp(x)：对矩阵中每个元素，求以e为底的x次方
      """
     print("#################1、自然对数和自然指数##################")
-    t = tf.ones([2,2])
+    t = tf.ones([2, 2])
     t_1 = tf.math.log(t)
     t_2 = tf.math.exp(t)
     t_3 = tf.exp(t)
