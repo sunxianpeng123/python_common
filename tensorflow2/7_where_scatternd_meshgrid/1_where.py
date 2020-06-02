@@ -8,12 +8,11 @@
 
 import tensorflow as tf
 
-
 def tf_where():
-    """ 传入mask，得到为true的坐标，使用gather_nd获取数据"""
+    """ 传入mask，得到为true的坐标，使用 gather_nd 获取数据"""
     print("#################1、tf_where###################")
     a = tf.random.normal([3, 3])
-    mask = a > 0#大于0位True，小于0位False
+    mask = a > 0# 大于 0 位 True，小于 0 位 False
 
     # 以第一个维度为标准，取出为True的数据，组成一个新的tensor
     b = tf.boolean_mask(a, mask)#取出mask为true的数据

@@ -22,7 +22,7 @@ def tf_clip_by_norm():
     print('t_norm = {}'.format(t_norm))#t_norm = 18.598787307739258
 
     # 先将向量归一化，然后乘以要限定的值，即可以达到将范数限定在一定范围的目的
-    t_2 = tf.clip_by_norm(t,15)
+    t_2 = tf.clip_by_norm(t, 15)
     t_2_norm = tf.norm(t_2)
     print('t_2 norm = {}'.format(t_2_norm))#t_2 norm = 15.0
     return None

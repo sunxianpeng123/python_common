@@ -68,7 +68,9 @@ def tf_clip_by_global_norm():
 
 if __name__ == '__main__':
     # (x, y), _ = datasets.mnist.load_data()
-    data_dir = r'E:\PythonProjects\python_common\tensorflow2\data\mnist.npz'
+    # F:\PythonProjects\python_common\tensorflow2\data
+    data_dir = r'../data'
+    print(os.path.abspath(data_dir))
     (x, y), _ = datasets.mnist.load_data(data_dir)
     x = tf.convert_to_tensor(x, dtype=tf.float32) / 50.
     y = tf.convert_to_tensor(y)
@@ -78,4 +80,4 @@ if __name__ == '__main__':
     x, y = next(iter(train_db))
     print('sample:', x.shape, y.shape)
     # print(x[0], y[0])
-    main()
+    tf_clip_by_global_norm()

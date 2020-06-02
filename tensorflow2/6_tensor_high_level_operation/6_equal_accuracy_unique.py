@@ -46,7 +46,7 @@ def tf_accuracy():
     #  [0.9  0.05 0.05]], shape=(2, 3), dtype=float32)
 
     # 求出每行最大值的下标索引，相当于取出每个样本最大概率的分类，转成int32
-    pred = tf.cast(tf.argmax(a,axis=1),dtype=tf.int32)
+    pred = tf.cast(tf.argmax(a, axis=1), dtype=tf.int32)
     # 已知样本的分类标签
     y = tf.constant([2,1])
     # 预测结果和真实结果进行比较，
@@ -67,7 +67,7 @@ def tf_unique():
     b = tf.unique(a)
 
     print('a = {}'.format(a))
-    # 返回的数据中包含
+    # 返回的数据中包含去重后的数据 和 原数据在去重后中的索引
     print('b = {}'.format(b))
     # b = Unique(y= < tf.Tensor: id = 31, shape = (5,), dtype = int32, numpy = array(
     #     [0, 1, 2, 3, 4]) >, idx = < tf.Tensor: id = 32, shape = (5,), dtype = int32, numpy = array([0, 1, 2, 3, 4]) >)
@@ -77,7 +77,6 @@ def tf_unique():
     # 将 d 还原回 c,
     # 传入去重后的数据，和 去重前的数据在去重后的数据中的下标索引
     e = tf.gather(d.y,d.idx)
-
 
     print('c = {}'.format(c))
     print('d = {}'.format(d))

@@ -29,7 +29,7 @@ def tf_pad():
     # [[1, 0], [1, 0]]是一个二维矩阵，表示，
     # 第一个 [1, 0]表示第一维，在行上看：上方补充1行，下方补充0行
     # 第二个 [1, 0]表示第二维，在列上看：左侧补充1列，右侧补充0列
-    e = tf.pad(c, [[1, 0], [1, 0]])
+    e = tf.pad(c, [[2, 0], [1, 0]])
 
     print('c = {}'.format(c))
     print('d = {}'.format(d))
@@ -43,6 +43,7 @@ def tf_pad():
     #  [6 7 8]]
 
     # e = [[0 0 0 0]
+    #  [0 0 0 0]
     #  [0 0 1 2]
     #  [0 3 4 5]
     #  [0 6 7 8]]
@@ -58,7 +59,6 @@ def tf_image_pad():
 
     print('a shape = {}'.format(a.shape))
     print('b shape = {}'.format(b.shape))
-
     return None
 
 def tf_tile():

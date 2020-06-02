@@ -42,8 +42,8 @@ def tf_reduce_min_max_mean_sum():
     print("求解指定维度的统计值======================")
     # axis 表示下标索引
     # axis=1 表示以第2个维度上的shape分组，即每组数据有三个
-
-    print(t.shape)
+    # t = tf.random.normal([2,3])
+    print("t.shape = {}".format(t.shape))
     t_5 = tf.reduce_min(t, axis=1)#
     t_6 = tf.reduce_max(t, axis=1)
     t_7 = tf.reduce_mean(t, axis=1)
