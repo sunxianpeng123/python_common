@@ -11,6 +11,7 @@ class SubModuleClass(object):
     def __init__(self):
         self.logger = logging.getLogger("mainModule.sub.module")
         self.logger.info("creating an instance in SubModuleClass")
+
     def doSomething(self):
         self.logger.info("do something in SubModule")
         a = []

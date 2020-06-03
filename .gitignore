@@ -52,3 +52,11 @@ tensorflow2/12_keras_api/HDF5/
 tensorflow2/12_keras_api/mannul_save_model/
 opencv/photo/detection/data/yolov3-tiny.conv.15
 flask/flask_demo/migrations/
+tensorflow2/cases/hpjy/digital_train/val/
+tensorflow2/cases/hpjy/digital_train/train/
+tensorflow2/cases/hpjy/kill_ation_detection/img_test/
+tensorflow2/cases/hpjy/digital_train/test/
+tensorflow2/cases/hpjy/kill_ation_detection/model/
+tensorflow2/cases/hpjy/kill_ation_detection/logs/
+tensorflow2/cases/hpjy/ctrl_rpc/logs/
+tensorflow2/cases/hpjy/digital_train/model/

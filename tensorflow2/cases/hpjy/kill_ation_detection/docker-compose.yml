@@ -1,0 +1,14 @@
+﻿version: '2.2'
+
+services:
+
+  classify_hpjy:
+
+    build: .
+    restart: always
+    volumes:
+      - ./img_test/:/darknet/img_test/
+
+
+
+
