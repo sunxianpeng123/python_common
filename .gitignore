@@ -60,3 +60,13 @@ tensorflow2/cases/hpjy/kill_ation_detection/model/
 tensorflow2/cases/hpjy/kill_ation_detection/logs/
 tensorflow2/cases/hpjy/ctrl_rpc/logs/
 tensorflow2/cases/hpjy/digital_train/model/
+tensorflow2/cases/lol/kill_recognition/train/
+tensorflow2/cases/lol/kill_recognition/val/
+tensorflow2/cases/lol/blood_recognition/train/
+tensorflow2/cases/lol/blood_recognition/val/
+tensorflow2/cases/lol/blood_recognition/logs/
+tensorflow2/cases/lol/kill_recognition/model/
+tensorflow2/cases/lol/blood_recognition/model/
+tensorflow2/cases/lol/blood_recognition/test/
+tensorflow2/cases/lol/ctrl_rpc/val/
+tensorflow2/cases/lol/ctrl_rpc/logs/
