@@ -27,13 +27,15 @@ def add_partition(table_name,platform_id):
     if table_name == "live_purchase_info":
         three = ") LOCATION 'hdfs://master20:8020/user/spark/parquet/live_show/purchase_info/date="
 
-
     if table_name == "live_anchor_basic_info_tb":
         three = ") LOCATION 'hdfs://master20:8020/user/spark/parquet/live_show/anchor_basic_info_tb/date="
     if table_name == "live_goods_info_tb":
         three = ") LOCATION 'hdfs://master20:8020/user/spark/parquet/live_show/goods_info_tb/date="
 
-
+    if table_name == "live_anchor_basic_info_ks":
+        three = ") LOCATION 'hdfs://master20:8020/user/spark/parquet/live_show/anchor_basic_info_ks/date="
+    if table_name == "live_goods_info_ks":
+        three = ") LOCATION 'hdfs://master20:8020/user/spark/parquet/live_show/goods_info_ks/date="
 
 
     four = "/plat="+str(platform_id) +"';"
@@ -73,8 +75,11 @@ if __name__ == '__main__':
     anchor_basic_table_name_tb = 'live_anchor_basic_info_tb'
     goods_info_table_name_tb = 'live_goods_info_tb'
 
-    tables = [anchor_basic_table_name,fans_info_table_name,fans_list_table_name,goods_info_table_name,purchase_info_table_name,anchor_basic_table_name_tb,goods_info_table_name_tb]
-    plats = [73]
+    anchor_basic_table_name_ks = 'live_anchor_basic_info_ks'
+    goods_info_table_name_ks = 'live_goods_info_ks'
+
+    tables = [anchor_basic_table_name,fans_info_table_name,fans_list_table_name,goods_info_table_name,purchase_info_table_name,anchor_basic_table_name_tb,goods_info_table_name_tb,anchor_basic_table_name_ks,goods_info_table_name_ks]
+    plats = [72]
     print(plats)
     # ALTER TABLE parquet.label_parquet ADD IF NOT EXISTS PARTITION(plat=201,date=20190527,group=999) LOCATION 'hdfs://master20:8020/tmp/repartition/comment/plat=201/date=20190527/group=999';
     for table_name in tables:

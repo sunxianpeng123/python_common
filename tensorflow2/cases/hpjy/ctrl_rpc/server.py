@@ -41,7 +41,6 @@ credentials = pika.PlainCredentials(mq_info['user'], mq_info['password'])
 connection = pika.BlockingConnection(pika.ConnectionParameters(mq_info['ip'], mq_info['port'], '/', credentials))
 channel = connection.channel()
 channel.queue_declare(queue=mq_info['mq_queue_name'], auto_delete=True, exclusive=False, durable=False)
-
 fibonacci_rpc = FibonacciRpcClient(mq_info)
 
 
@@ -81,6 +80,5 @@ def on_request(ch, method, props, body):
 
 channel.basic_qos(prefetch_count=1)
 channel.basic_consume(queue=mq_info['mq_queue_name'], on_message_callback=on_request)
-
 logging.info(" [x] Awaiting RPC requests")
 channel.start_consuming()
