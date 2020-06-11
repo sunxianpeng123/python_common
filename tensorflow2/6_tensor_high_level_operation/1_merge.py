@@ -26,7 +26,6 @@ def tf_concat():
 
     print('t_1 shape = {}'.format(t_1.shape))#t_1 shape = (7, 35, 8)
     print('t_2 shape = {}'.format(t_2.shape))#t_2 shape = (4, 35, 8)
-
     return None
 
 def tf_stack():

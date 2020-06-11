@@ -70,3 +70,8 @@ tensorflow2/cases/lol/blood_recognition/model/
 tensorflow2/cases/lol/blood_recognition/test/
 tensorflow2/cases/lol/ctrl_rpc/val/
 tensorflow2/cases/lol/ctrl_rpc/logs/
+tensorflow2/cases/automatic_drive/images/0091.jpg
+tensorflow2/cases/automatic_drive/images/
+tensorflow2/cases/automatic_drive/nb_images/
+tensorflow2/cases/automatic_drive/model_data/yolo.h5
+tensorflow2/cases/automatic_drive/logs/
