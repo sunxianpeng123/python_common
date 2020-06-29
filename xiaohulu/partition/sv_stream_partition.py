@@ -79,7 +79,7 @@ if __name__ == '__main__':
     goods_info_table_name_ks = 'live_goods_info_ks'
 
     tables = [anchor_basic_table_name,fans_info_table_name,fans_list_table_name,goods_info_table_name,purchase_info_table_name,anchor_basic_table_name_tb,goods_info_table_name_tb,anchor_basic_table_name_ks,goods_info_table_name_ks]
-    plats = [72]
+    plats = [71]
     print(plats)
     # ALTER TABLE parquet.label_parquet ADD IF NOT EXISTS PARTITION(plat=201,date=20190527,group=999) LOCATION 'hdfs://master20:8020/tmp/repartition/comment/plat=201/date=20190527/group=999';
     for table_name in tables:
