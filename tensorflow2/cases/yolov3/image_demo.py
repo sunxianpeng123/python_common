@@ -7,7 +7,7 @@
 #   File name   : image_demo.py
 #   Author      : YunYang1994
 #   Created date: 2019-07-12 13:07:27
-#   Description :
+#   Description :https://github.com/YunYang1994/TensorFlow2.0-Examples
 #
 # ================================================================
 
@@ -37,7 +37,7 @@ for i, fm in enumerate(feature_maps):
     bbox_tensors.append(bbox_tensor)
 
 model = tf.keras.Model(input_layer, bbox_tensors)
-utils.load_weights(model, "./yolov3.weights")
+utils.load_weights(model, "model/yolov3.weights")
 model.summary()
 
 pred_bbox = model.predict(image_data)
