@@ -57,18 +57,25 @@ def readImg(image_path, path_has_chinese=True):
 # 它需要两个输入，一个是我们的原始图像，第二个是称为结构元素或内核，它决定了操作的本质。两个基本的形态学运算符是侵蚀和膨胀。
 # 然后它的变体形式如Opening，Closing，Gradient等也发挥作用。我们将在以下图片的帮助下逐一看到它们：
 # ==============================================================================
-def imgLaphlacian(gray):
+def imgCanny(gray):
     """
     Canny边缘检测
     :param img:
     :return:拉普拉斯算子可以使用二阶导数的形式定义，可假设其离散实现类似于二阶Sobel导数，事实上，OpenCV在计算拉普拉斯算子时直接调用Sobel 算子。
     Laplacian算子：图像中的边缘区域，像素值会发生“跳跃”，对这些像素求导，在其一阶导数在边缘位置为极值，这就是Sobel算子使用的原理——极值处就是边缘。
+        cv2.Canny(image,            # 输入原图（必须为单通道图）
+              threshold1,
+              threshold2,       # 较大的阈值2用于检测图像中明显的边缘
+              [, edges[,
+              apertureSize[,    # apertureSize：Sobel算子的大小
+              L2gradient ]]])   # 参数(布尔值)：
+                                  true： 使用更精确的L2范数进行计算（即两个方向的倒数的平方和再开放），
+                                  false：使用L1范数（直接将两个方向导数的绝对值相加）。
     """
-    # 这里只是处理单通道的灰度图像，彩色的三通道的图像同理。
-    lablacian = cv2.Laplacian(img, cv2.CV_64F)
-    lablacian = cv2.convertScaleAbs(lablacian)
-    showImg(img=lablacian)
-
+    canny_1 = cv2.Canny(gray, 100, 200)
+    canny_2 = cv2.Canny(gray, 64, 128)
+    showImg(img=canny_1)
+    showImg(img=canny_2)
 
 
 if __name__ == '__main__':
@@ -79,4 +86,4 @@ if __name__ == '__main__':
     img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
     print("img1 shape = {}".format(img.shape))
     print("=================================")
-    imgLaphlacian(img_gray)
+    imgCanny(img_gray)
