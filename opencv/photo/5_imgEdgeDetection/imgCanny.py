@@ -79,8 +79,7 @@ def imgCanny(gray):
 
 
 if __name__ == '__main__':
-    read_path_lena = os.path.join(os.path.abspath("/PythonProjects\python_common\opencv\data\image\exercise"),
-                                  "lena.jpg")
+    read_path_lena = os.path.join(os.path.abspath("/PythonProjects\python_common\opencv\data\image\exercise"),"lena.jpg")
     print("read_path_lena = {}".format(read_path_lena))
     img = readImg(read_path_lena, False)
     img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
