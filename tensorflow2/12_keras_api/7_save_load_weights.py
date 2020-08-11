@@ -116,9 +116,9 @@ if __name__ == '__main__':
     load_weights_dir = save_weights_dir
     print(os.path.abspath(save_weights_dir))
 
-
+    path = r"/tensorflow2/data"
     mnist_path =os.path.abspath(r'../data/mnist.npz')
-    print('mnist path = {}'.format(mnist_path))
+    print('mnist path = {}'.format(path))
 
     (x_train, y_train), (x_test, y_test) = datasets.mnist.load_data(mnist_path)
     print('x train shape = {},y train shape = {}'.format(x_train.shape, y_train.shape))
@@ -148,6 +148,9 @@ if __name__ == '__main__':
     #################################################################
     """保存权重"""
     save_weights_path = save_weights(model, save_weights_dir)
+
+    # model.save_weights(filepath=save_weights_dir + "epoch-{}".format(1), save_format="tf")
+    # exit(0)
     """加载保存的模型"""
     print("model_loaded########################")
     load_weights_path = save_weights_path
