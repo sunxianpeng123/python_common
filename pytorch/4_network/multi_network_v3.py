@@ -5,6 +5,7 @@
 @file: multi_network_v1.py
 @time: 2019/11/23 13:20
 """
+import os
 
 import torch
 import numpy as np
@@ -44,7 +45,7 @@ class model_net(nn.Module):
         return x
 
 def plot_net(x):
-    out = F.sigmoid(model(torch.from_numpy(x).float())).data.numpy()
+    out = torch.sigmoid(model(torch.from_numpy(x).float())).data.numpy()
     out = (out > 0.5) * 1
     return out
 
@@ -94,12 +95,15 @@ if __name__ == '__main__':
     # 两种保存方式
     # 1
     # 将模型架构和参数保存在一起
-    save_name = 'model_net.pth'
+    save_name = 'model/model_net.pth'
+    print(os.path.abspath(save_name))
     torch.save(model,save_name)
+
     seq_net1 = torch.load(save_name)
     # 2 推荐方式
     # 只保存参数
-    param_name = 'model_net_params.pth'
+    param_name = 'model/model_net_params.pth'
     torch.save({'state_dict': model.state_dict()}, param_name)
+
     seq_net2 = model_net(2,4,1)
     seq_net2.load_state_dict(torch.load(param_name)['state_dict'])

@@ -12,8 +12,9 @@ from torch import nn
 import torch.nn.functional as F
 import matplotlib.pyplot as plt
 
-def plt_decision_boundary(model,x,y):
-    #	Set	min	and	max	values	and	give	it	some	padding
+
+def plt_decision_boundary(model, x, y):
+    #Set min and	max	values	and	give	it	some	padding
     x_min, x_max = x[:, 0].min() - 1, x[:, 0].max() + 1
     y_min, y_max = x[:, 1].min() - 1, x[:, 1].max() + 1
     h = 0.01
@@ -30,21 +31,24 @@ def plt_decision_boundary(model,x,y):
     plt.xlabel('x1')
     plt.scatter(x[:, 0], x[:, 1], c=y.reshape(-1), s=40, cmap=plt.cm.Spectral)
 
-def two_network(x,w1,w2,b1,b2):
-    r = torch.mm(x,w1)+b1
+
+def two_network(x, w1, w2, b1, b2):
+    r = torch.mm(x, w1) + b1
     r = F.tanh(r)
-    r = torch.mm(r,w2)+b2
+    r = torch.mm(r, w2) + b2
     return r
 
+
 def plot_network(x):
-    x	=	torch.from_numpy(x).float()
-    x1	=	torch.mm(x,	w1)	+ b1
-    x1	=	F.tanh(x1)
-    x2	=	torch.mm(x1,	w2)	+ b2
-    out	=	F.sigmoid(x2)
-    out	=	(out > 0.5)	* 1
+    x = torch.from_numpy(x).float()
+    x1 = torch.mm(x, w1) + b1
+    x1 = F.tanh(x1)
+    x2 = torch.mm(x1, w2) + b2
+    out = F.sigmoid(x2)
+    out = (out > 0.5) * 1
     print("out = {}".format(out))
     return out.data.numpy()
+
 
 if __name__ == '__main__':
 
@@ -64,6 +68,7 @@ if __name__ == '__main__':
     # 画出图像
     plt.scatter(x[:, 0], x[:, 1], c=y.reshape(-1), s=40, cmap=plt.cm.Spectral)
     plt.show()
+
     # 定义两层神经网络
     epochs = 1000
     learning_rate = 1
@@ -71,20 +76,20 @@ if __name__ == '__main__':
     x = torch.from_numpy(x).float()
     y = torch.from_numpy(y).float()
 
-    w1 = nn.Parameter(torch.randn(2,4,requires_grad=True) * 0.01).float()
+    w1 = nn.Parameter(torch.randn(2, 4, requires_grad=True) * 0.01).float()
     b1 = nn.Parameter(torch.zeros(4)).float()
-    w2 = nn.Parameter(torch.randn(4,1)*0.01).float()
+    w2 = nn.Parameter(torch.randn(4, 1) * 0.01).float()
     b2 = nn.Parameter(torch.zeros(1)).float()
-    optimizer = torch.optim.SGD([w1,w2,b1,b2],lr=learning_rate)
+    optimizer = torch.optim.SGD([w1, w2, b1, b2], lr=learning_rate)
     criterion = nn.BCEWithLogitsLoss()
     for epoch in range(epochs):
-        pred = two_network(x,w1,w2,b1,b2)
-        loss = criterion(pred,y)
+        pred = two_network(x, w1, w2, b1, b2)
+        loss = criterion(pred, y)
         loss.backward()
         optimizer.step()
         optimizer.zero_grad()
         if epoch % 100 == 0:
-            print("epoch :{},loss ={}".format(epoch,loss))
+            print("epoch :{},loss ={}".format(epoch, loss))
 
     plt_decision_boundary(lambda x: plot_network(x), x.numpy(), y.numpy())
     plt.title('2 layer network')

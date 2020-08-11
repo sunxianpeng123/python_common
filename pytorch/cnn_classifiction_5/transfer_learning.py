@@ -17,12 +17,14 @@ import matplotlib.pyplot as plt
 import time
 import os
 import copy
+
+
 # print("Torchvision Version: ",torchvision.__version__)
 
 def check_train_data(dataloaders_dict):
     """查看一个批次的数据"""
     inputs, labels = next(iter(dataloaders_dict["train"]))  # 一个batch
-    print("inputs.shape = {}".format(inputs.shape))#torch.Size([32, 3, 224, 224])
+    print("inputs.shape = {}".format(inputs.shape))  # torch.Size([32, 3, 224, 224])
     # tensor([1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1])
     print("labels = {}".format(labels))
     """查看所有训练数据批次的batch_size大小"""
@@ -30,6 +32,8 @@ def check_train_data(dataloaders_dict):
         # print(inputs)
         # print(labels)
         print(labels.size())  # 最后一个batch不足32
+
+
 def check_one_image_in_loader(t_loader, title='Image'):
     batch_imgs = next(iter(t_loader))[0]
     print('batch_imgs.shape = {}'.format(batch_imgs.shape))
@@ -37,32 +41,42 @@ def check_one_image_in_loader(t_loader, title='Image'):
     img = img_tensor.cpu().clone()  # we clone the tensor to not do changes on it
     # img = img.squeeze(0)  # remove the fake batch dimension,这个.squeeze(0)看不懂，去掉也可以运行
     print('img.shape = {}'.format(img.shape))
-    image =transforms.ToPILImage()(img)# unloader(img)  # tensor转换成图像
+    image = transforms.ToPILImage()(img)  # unloader(img)  # tensor转换成图像
     plt.imshow(image)
     plt.title(title)
     # 可以去掉看看，只是延迟显示作用
     plt.pause(1)  # pause a bit so that plots are updated
     plt.show()
 
+
 def check_model_ft_info(model_ft):
     print("model_ft = {}".format(model_ft))
     print("next(iter(model_ft.named_parameters())) = {}".format(next(iter(model_ft.named_parameters()))))
-     # 是元组，只有两个值
+    # 是元组，只有两个值
     print("len(next(iter(model_ft.named_parameters()))) = {}".format(len(next(iter(model_ft.named_parameters())))))
     for name, param in model_ft.named_parameters():
         print(name)  # 看下都有哪些参数
 
+
 def set_parameter_requires_grad(model, feature_extracting):
     if feature_extracting:
         for param in model.parameters():
-            param.requires_grad = False #提取的参数梯度不更新
+            param.requires_grad = False  # 提取的参数梯度不更新
+
 
 def initialize_model(model_name, num_classes, feature_extract, use_pretrained=True):
+    """
+    :param model_name:
+    :param num_classes:
+    :param feature_extract: False所有参数都训练,True所有的参数都不训练
+    :param use_pretrained: 是否使用预训练的参数
+    :return:
+    """
     model_ft = None
     input_size = None
     if model_name == "resnet":
         # 如果True，从imagenet上返回预训练的模型和参数
-        #关于对pre-trained模型的使用和理解, https://blog.csdn.net/gbyy42299/article/details/78977826
+        # 关于对pre-trained模型的使用和理解, https://blog.csdn.net/gbyy42299/article/details/78977826
         model_ft = models.resnet18(pretrained=use_pretrained)
         set_parameter_requires_grad(model_ft, feature_extract)  # 提取的参数梯度不更新
         # print(model_ft) 可以打印看下
@@ -75,6 +89,7 @@ def initialize_model(model_name, num_classes, feature_extract, use_pretrained=Tr
         # out_features=1000 改为 num_classes=2
         input_size = 224  # resnet18网络输入图片维度是224，resnet34，50，101，152也是
     return model_ft, input_size
+
 
 def train_model(model, dataloaders, criterion, optimizer, num_epochs=5):
     # global device
@@ -132,6 +147,7 @@ def train_model(model, dataloaders, criterion, optimizer, num_epochs=5):
     model.load_state_dict(best_model_wts)
     return model, val_acc_history
 
+
 def train_all_parameter():
     """训练所有参数，包括resnet的参数"""
     # Initialize the non-pretrained version of the model used for this run
@@ -140,13 +156,14 @@ def train_all_parameter():
                                         feature_extract=False,  # 所有参数都训练
                                         use_pretrained=False)  # 不要imagenet的参数
     scratch_model = scratch_model.to(device)
-    scratch_optimizer = optim.SGD(scratch_model.parameters(),lr=0.001, momentum=0.9)
+    scratch_optimizer = optim.SGD(scratch_model.parameters(), lr=0.001, momentum=0.9)
     scratch_criterion = nn.CrossEntropyLoss()
-    _, scratch_hist = train_model(scratch_model,dataloaders_dict,scratch_criterion, scratch_optimizer,num_epochs=num_epochs)
+    _, scratch_hist = train_model(scratch_model, dataloaders_dict, scratch_criterion, scratch_optimizer,
+                                  num_epochs=num_epochs)
 
 
 if __name__ == '__main__':
-    input_size = 224#输入图片的大小
+    input_size = 224  # 输入图片的大小
     # Top level data directory. Here we assume the format of the directory conforms
     #   to the ImageFolder structure
     data_dir = "./hymenoptera_data"
@@ -247,12 +264,3 @@ if __name__ == '__main__':
     plt.xticks(np.arange(1, num_epochs + 1, 1.0))
     plt.legend()
     plt.show()
-
-
-
-
-
-
-
-
-

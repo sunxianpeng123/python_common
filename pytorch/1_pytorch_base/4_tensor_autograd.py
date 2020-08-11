@@ -7,6 +7,7 @@
 """
 import torch
 
+
 def tensor_autograd_demo_1():
     x = torch.tensor(1., requires_grad=True)
     w = torch.tensor(2., requires_grad=True)
@@ -49,6 +50,7 @@ def tensor_autograd_demo_2():
             w2 -= learning_rate * w2.grad
             w1.grad.zero_()
             w2.grad.zero_()
+
 
 if __name__ == '__main__':
     tensor_autograd_demo_1()
