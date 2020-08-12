@@ -53,29 +53,26 @@ def readImg(image_path, path_has_chinese=True):
 
 
 # ==============================================================================
-# 形态变换是基于图像形状的一些简单操作。它通常在二值化图像上执行。
-# 它需要两个输入，一个是我们的原始图像，第二个是称为结构元素或内核，它决定了操作的本质。两个基本的形态学运算符是侵蚀和膨胀。
-# 然后它的变体形式如Opening，Closing，Gradient等也发挥作用。我们将在以下图片的帮助下逐一看到它们：
+# 一、Matplotlib 绘制直方图
+# 1、概念
+#       直方图简单来说就是图像中每个像素值的个数统计，比如说一副灰度图中像素值为0的有多少个，1的多少个……直方图是一种分析图片的手段：
+#       归一化直方图：统计不同像素值的个数在图像中出现的概率。
+#       要理解直方图，绕不开“亮度”这个概念。人们把照片的亮度分为0到255共256个数值，数值越大，代表的亮度越高。
+#       其中0代表纯黑色的最暗区域，255表示最亮的纯白色，而中间的数字就是不同亮度的灰色。人们还进一步把这些亮度分为了5个区域，分别是黑色，阴影，中间调，高光和白色。
+# 2、几个重要参数
+#       dims：要计算的通道数，对于灰度图 dims=1
+#       range：要计算的像素值范围，一般为[0,256]（不包括256）
+#       bins：子区段数目，如果我们统计0255每个像素值，bins=256；如果划分区间，比如015, 1631…240255这样16个区间，bins=16
 # ==============================================================================
-def imgCanny(gray):
+def imgHistMatplotlib(gray):
     """
-    Canny边缘检测
-    :param img:
-    :return:拉普拉斯算子可以使用二阶导数的形式定义，可假设其离散实现类似于二阶Sobel导数，事实上，OpenCV在计算拉普拉斯算子时直接调用Sobel 算子。
-    Laplacian算子：图像中的边缘区域，像素值会发生“跳跃”，对这些像素求导，在其一阶导数在边缘位置为极值，这就是Sobel算子使用的原理——极值处就是边缘。
-        cv2.Canny(image,            # 输入原图（必须为单通道图）
-              threshold1,
-              threshold2,       # 较大的阈值2用于检测图像中明显的边缘
-              [, edges[,
-              apertureSize[,    # apertureSize：Sobel算子的大小
-              L2gradient ]]])   # 参数(布尔值)：
-                                  true： 使用更精确的L2范数进行计算（即两个方向的倒数的平方和再开放），
-                                  false：使用L1范数（直接将两个方向导数的绝对值相加）。
+    :param gray:
+    :return:
     """
-    canny_1 = cv2.Canny(gray, 100, 200)
-    canny_2 = cv2.Canny(gray, 64, 128)
-    showImg(img=canny_1)
-    showImg(img=canny_2)
+    array = gray.ravel()#ravel 将多维数组降为一维数组
+    plt.hist(array,256)#256表示像素级，指[0,255]
+    plt.show()
+
 
 
 if __name__ == '__main__':
@@ -85,5 +82,4 @@ if __name__ == '__main__':
     img = readImg(read_path_lena, False)
     img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
     print("img1 shape = {}".format(img.shape))
-    print("=================================")
-    imgCanny(img_gray)
+    imgHistMatplotlib(img_gray)

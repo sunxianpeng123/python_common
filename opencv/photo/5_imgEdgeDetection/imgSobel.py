@@ -89,7 +89,6 @@ def imgSobel(gray):
     showImg(soble_xy4)
 
 
-
 if __name__ == '__main__':
     read_path_lena = os.path.join(os.path.abspath("/PythonProjects\python_common\opencv\data\image\exercise"),
                                   "lena.jpg")
