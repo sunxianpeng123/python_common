@@ -77,3 +77,4 @@ tensorflow2/cases/automatic_drive/model_data/yolo.h5
 tensorflow2/cases/automatic_drive/logs/
 tensorflow2/cases/yolov3/yolov3.weights
 tensorflow2/cases/yolov3/model/yolov3.weights
+pytorch/object_detection/data_set/
