@@ -48,14 +48,14 @@ class Main():
         f = open(file_path, "w")
         import datetime
         # now = datetime.datetime.now()#获取当前系统时间
-        time_run = "2020-01-03 00:00:00"
+        time_run = "2020-08-03 00:00:00"
         now = datetime.datetime.strptime(time_run, "%Y-%m-%d %H:%M:%S")#指定某个时间
         print (now)
         i= 0
         while 1:
             date = now + datetime.timedelta(days= i)
             date = str(date).split(" ")[0].replace("-","")
-            if  int(date) <= 20200501:
+            if  int(date) <= 20200901:
                 s = one + str(date) + two + str(date) + "';"
                 print(s)
                 f.write(s)
@@ -74,7 +74,7 @@ if __name__ == '__main__':
     gift_table_type = "gift"  # gift
     ####message
     all_platform_ids = [1,2,9,15,57,59,36,8,26,12,28,29,60]
-    for platform_id in [28,29]:
+    for platform_id in [1,9,26,57,59]:
         m.addPartitionsU(msg_table_name, platform_id, message_table_type)  # message
         m.addPartitionsU(gift_table_name, platform_id, gift_table_type)
 
