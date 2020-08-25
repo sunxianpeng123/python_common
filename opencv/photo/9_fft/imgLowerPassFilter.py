@@ -53,34 +53,46 @@ def readImg(image_path, path_has_chinese=True):
 
 
 # ==============================================================================
-# 任何连续周期信号，都可以用适当的一组正弦曲线组合而成
-# 相位：不是同时开始的一组余弦函数，在叠加时要体现开始时间
+# 低通滤波器
+#   低通滤波器是像素与周围像素的亮度差值小于一个特定值时，平滑该像素的亮度。
+#
+# 用于：去噪和模糊化。
+#
+# 注意：低通滤波器容许低频信号通过，但减弱频率高于截止频率的信号的通过。
 # ==============================================================================
-
-
-def imgNumpyFFTReverse(gray):
+def imgOpencvLPF(gray):
     """
-    使用傅里叶变换得到图像的低频和高频，
-    对低频（图像的细节）处理（保留、舍弃或其他），可以模糊图像等
-    对高频进行处理（）保留、舍弃或其他），可以保留图像边界等
+    调节掩膜区域的大小可以得到不同模糊程度的图像，越大则越清晰，越小则越模糊。
     :param gray:
     :return:
     """
     """实现傅里叶变换"""
     # 对图像进行傅里叶变换
-    f = np.fft.fft2(gray)
+    dft = cv2.dft(np.float32(gray), flags=cv2.DFT_COMPLEX_OUTPUT)
     # 将低频从左上角移动到中心
-    fshift = np.fft.fftshift(f)
+    dshift = np.fft.fftshift(dft)
     # 重置 区间,映射到[0,255]之间，以便使用图像显示
-    # result = 20 * np.log(np.abs(fshift))
+    # result = 20 * np.log(cv2.magnitude(dshift[:,:,0],dshift[:,:,1]))
+
+    """低通滤波"""
+    rows, cols = gray.shape
+    # 取图像中心点
+    row_mid, col_mid = int(rows / 2), int(cols / 2)
+    # 构造掩膜图像
+    mask = np.zeros((rows, cols, 2), np.uint8)
+
+    # 去掉低频区域
+    mask[row_mid - 30:row_mid + 30, col_mid - 30:col_mid + 30] = 1
+    # 将频谱图像和掩膜相乘,保留低频部分，高频部分变成0
+    md = dshift * mask
 
     """实现逆傅里叶变换"""
     # 将低频从中心移动到左上角
-    ishift = np.fft.ifftshift(fshift)
+    imd = np.fft.ifftshift(md)
     # 返回一个复数数组
-    iimg = np.fft.ifft2(ishift)
+    iimg = cv2.idft(imd)
     # 将上述复数数组重置区间到[0,255],便于图像显示
-    iimg = np.abs(iimg)
+    iimg = cv2.magnitude(iimg[:, :, 0], iimg[:, :, 1])
 
     # 原始灰度图
     plt.subplot(1, 2, 1), plt.imshow(gray, 'gray'), plt.axis('off'), plt.title('original')
@@ -96,5 +108,6 @@ if __name__ == '__main__':
     img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
     ret, binary = cv2.threshold(img_gray, 127, 255, 0)
     print("img1 shape = {}".format(img.shape))
-    imgNumpyFFTReverse(img_gray)
+    imgOpencvLPF(img_gray)
+
 

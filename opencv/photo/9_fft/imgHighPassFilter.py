@@ -53,16 +53,18 @@ def readImg(image_path, path_has_chinese=True):
 
 
 # ==============================================================================
-# 任何连续周期信号，都可以用适当的一组正弦曲线组合而成
-# 相位：不是同时开始的一组余弦函数，在叠加时要体现开始时间
+# 高通滤波器
+#       高通滤波器（HPF）是检测图像的某个区域，然后根据像素与周围像素的亮度差值来提升像素的亮度。
+#
+#用于：边缘提取与增强。
+#
+#注意：通过高通滤波器进行滤波后，再和原图像叠加，可以增强图像中灰度级变化较快的部分，即锐化。
 # ==============================================================================
-
-
-def imgNumpyFFTReverse(gray):
+def imgNumpyHPF(gray):
     """
-    使用傅里叶变换得到图像的低频和高频，
-    对低频（图像的细节）处理（保留、舍弃或其他），可以模糊图像等
-    对高频进行处理（）保留、舍弃或其他），可以保留图像边界等
+    傅里叶变换得到低频、高频信息，针对他们不同处理可以实现不同目的
+    傅里叶变换是可逆的，可以恢复原图
+    在频域对图像进行处理，会反映在傅里叶逆变换生成的图像上
     :param gray:
     :return:
     """
@@ -73,6 +75,14 @@ def imgNumpyFFTReverse(gray):
     fshift = np.fft.fftshift(f)
     # 重置 区间,映射到[0,255]之间，以便使用图像显示
     # result = 20 * np.log(np.abs(fshift))
+
+    """高通滤波"""
+    # 得到边缘图像
+    rows, cols = gray.shape
+    # 取图像中心点
+    row_mid, col_mid = int(rows / 2), int(cols / 2)
+    # 去掉低频区域
+    fshift[row_mid - 30:row_mid + 30, col_mid - 30:col_mid + 30] = 0
 
     """实现逆傅里叶变换"""
     # 将低频从中心移动到左上角
@@ -96,5 +106,6 @@ if __name__ == '__main__':
     img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
     ret, binary = cv2.threshold(img_gray, 127, 255, 0)
     print("img1 shape = {}".format(img.shape))
-    imgNumpyFFTReverse(img_gray)
+    imgNumpyHPF(img_gray)
+
 

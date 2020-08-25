@@ -56,37 +56,27 @@ def readImg(image_path, path_has_chinese=True):
 # 任何连续周期信号，都可以用适当的一组正弦曲线组合而成
 # 相位：不是同时开始的一组余弦函数，在叠加时要体现开始时间
 # ==============================================================================
-
-
-def imgNumpyFFTReverse(gray):
+def imgOpencvFFT(gray):
     """
-    使用傅里叶变换得到图像的低频和高频，
-    对低频（图像的细节）处理（保留、舍弃或其他），可以模糊图像等
-    对高频进行处理（）保留、舍弃或其他），可以保留图像边界等
+    傅里叶变换得到低频、高频信息，针对他们不同处理可以实现不同目的
+    傅里叶变换是可逆的，可以恢复原图
+    在频域对图像进行处理，会反映在傅里叶逆变换生成的图像上
     :param gray:
     :return:
     """
     """实现傅里叶变换"""
     # 对图像进行傅里叶变换
-    f = np.fft.fft2(gray)
+    dft = cv2.dft(np.float32(gray), flags=cv2.DFT_COMPLEX_OUTPUT)
     # 将低频从左上角移动到中心
-    fshift = np.fft.fftshift(f)
+    dshift = np.fft.fftshift(dft)
     # 重置 区间,映射到[0,255]之间，以便使用图像显示
-    # result = 20 * np.log(np.abs(fshift))
-
-    """实现逆傅里叶变换"""
-    # 将低频从中心移动到左上角
-    ishift = np.fft.ifftshift(fshift)
-    # 返回一个复数数组
-    iimg = np.fft.ifft2(ishift)
-    # 将上述复数数组重置区间到[0,255],便于图像显示
-    iimg = np.abs(iimg)
-
+    result = 20 * np.log(cv2.magnitude(dshift[:, :, 0], dshift[:, :, 1]))
     # 原始灰度图
     plt.subplot(1, 2, 1), plt.imshow(gray, 'gray'), plt.axis('off'), plt.title('original')
     # 频谱图像
-    plt.subplot(1, 2, 2), plt.imshow(iimg, 'gray'), plt.axis('off'), plt.title('result')
+    plt.subplot(1, 2, 2), plt.imshow(result, 'gray'), plt.axis('off'), plt.title('result')
     plt.show()
+
 
 if __name__ == '__main__':
     read_path_lena = os.path.join(os.path.abspath("/PythonProjects\python_common\opencv\data\image\exercise"),
@@ -96,5 +86,6 @@ if __name__ == '__main__':
     img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
     ret, binary = cv2.threshold(img_gray, 127, 255, 0)
     print("img1 shape = {}".format(img.shape))
-    imgNumpyFFTReverse(img_gray)
+    imgOpencvFFT(img_gray)
+
 
