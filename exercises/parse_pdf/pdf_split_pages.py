@@ -24,6 +24,7 @@ from PyPDF2 import PdfFileReader, PdfFileWriter
 
 if __name__ == '__main__':
     file_read_path = u"F:\PythonProjects\python_common\exercises\parse_pdf\高中词汇英译中练习.pdf"
+    # file_read_path = r"F:\PythonProjects\python_common\exercises\parse_pdf\高中英语词汇词根+联想记忆法_乱序版.pdf"
     file_read_basename = os.path.basename(file_read_path)
     file_read_name = file_read_basename.split(".")[0]
     print("file_read_basename = {}, file_read_name = {}".format(file_read_basename,file_read_name))
@@ -33,6 +34,7 @@ if __name__ == '__main__':
     pages = pdf_reader.getNumPages()
     print("pdf pages number = {}".format(pages))
     # write
+    # exit(0)
     pdf_writer = PdfFileWriter()
     file_write_dir = u"F:\PythonProjects\python_common\exercises\parse_pdf"
     threold = 2
@@ -40,7 +42,7 @@ if __name__ == '__main__':
     for i in range(pages):
         print("this is the {} page".format(i))
         if split_page_num == threold:
-            file_write_basename = file_read_basename + "_" + str(i-1) + "-" + str(i) + ".pdf"
+            file_write_basename = file_read_name + "_" + str(i-1) + "-" + str(i) + ".pdf"
             # file_write_basename = os.path.join(file_write_name)
             print(file_write_basename)
             file_write_path = os.path.join(file_write_dir,file_write_basename)
@@ -53,7 +55,7 @@ if __name__ == '__main__':
             pdf_writer.addPage(pdf_reader.getPage(i))
             split_page_num += 1
     #兜底
-    file_write_basename = file_read_basename + "_" + "last"+ ".pdf"
+    file_write_basename = file_read_name + "_" + "last"+ ".pdf"
     # file_write_basename = os.path.join(file_write_name)
     print(file_write_basename)
     file_write_path = os.path.join(file_write_dir, file_write_basename)

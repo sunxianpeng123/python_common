@@ -12,15 +12,14 @@ from pdfminer.pdfparser import PDFParser, PDFDocument
 
 
 def parse(file_read_path):
-
-    pdf_file = open(file_read_path,"rb")
+    pdf_file = open(file_read_path, "rb")
     parser = PDFParser(pdf_file)
-    #创建一个PDF文档
+    # 创建一个PDF文档
     doc = PDFDocument()
-    #连接分析器，与文档对象
+    # 连接分析器，与文档对象
     parser.set_document(doc)
     doc.set_parser(parser)
-    #提供初始化密码，如果没有密码，就创建一个空的字符串
+    # 提供初始化密码，如果没有密码，就创建一个空的字符串
     doc.initialize()
     # 文档是否提供txt转换，不提供就忽略
     if not doc.is_extractable:
@@ -52,5 +51,6 @@ def parse(file_read_path):
 
 
 if __name__ == '__main__':
-    file_read_path = u"F:\PythonProjects\python_common\exercises\parse_pdf\高中英语词汇词根+联想记忆法  乱序版.pdf"
+    file_read_path = u"F:\PythonProjects\python_common\exercises\parse_pdf\高中英语词汇词根+联想记忆法_乱序版.pdf" # no ok
+    # file_read_path = "F:\PythonProjects\python_common\exercises\parse_pdf\高中词汇英译中练习.pdf"  # ok
     parse(file_read_path)
