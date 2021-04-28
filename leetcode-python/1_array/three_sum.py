@@ -29,16 +29,31 @@ def threeSum(nums):
     nums.sort()
     print(nums)
     for i in range(len(nums)):
+        # 第一个数字大于0时，三数之和不可能=0了，直接返回
+        if nums[i] > 0:
+            return result
+        # 需要和上一次枚举的数不相同
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue
         start, end = i + 1, len(nums) - 1
         while start < end:
             sum = nums[start] + nums[end] + nums[i]
             if sum == 0:
-                result = result + [nums[i], nums[start], nums[end]]
+                result.append([nums[i], nums[start], nums[end]])
+                # 移动start索引，直到找到和当前start对应的值不想等的下一个start值
+                while start < end and nums[start] == nums[start + 1]:
+                    start += 1
+                # 移动end索引，直到找到和当前end对应的值不想等的下一个end值
+                while start < end and nums[end] == nums[end - 1]:
+                    end -= 1
+                start += 1
+                end -= 1
+            #当前和大于零则移动右侧索引，使之变小
             elif sum > 0:
                 end -= 1
+            # 当前值小于零则移动左侧索引，使之变大
             else:
                 start += 1
-
     return result
 
 

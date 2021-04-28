@@ -27,8 +27,19 @@ def fourSum(nums, target):
     :rtype: List[List[int]]
     """
     result = []
-    pass
+    if len(nums) < 4:
+        return result
+    nums.sort()
+    for i in range(len(nums) - 3):
+        # 当前值和前一个值相等，则跳过当前值，继续向下执行
+        if i > 0 and nums[i] == nums[i - 1]:
+            continue
+        sum = nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3]
+        if sum >target:
+            break
+        if sum
 
+    pass
 
 
 if __name__ == '__main__':
