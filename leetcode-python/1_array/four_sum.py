@@ -35,9 +35,10 @@ def fourSum(nums, target):
         if i > 0 and nums[i] == nums[i - 1]:
             continue
         sum = nums[i] + nums[i + 1] + nums[i + 2] + nums[i + 3]
-        if sum >target:
+        if sum > target:
             break
-        if sum
+        if sum == 1:
+            pass
 
     pass
 
